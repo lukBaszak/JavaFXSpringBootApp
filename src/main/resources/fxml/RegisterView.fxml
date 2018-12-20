@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="246.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lubaszak.controller.RegisterController">
+   <children>
+      <TextField fx:id="emailField" layoutX="43.0" layoutY="105.0" promptText="email" />
+      <TextField fx:id="passwordField" layoutX="43.0" layoutY="161.0" promptText="password" />
+      <TextField fx:id="repeatedPasswordField" layoutX="43.0" layoutY="213.0" promptText="reapeat password" />
+      <Button layoutX="91.0" layoutY="281.0" mnemonicParsing="false" onAction="#registerUser" text="Button" />
+   </children>
+</Pane>
