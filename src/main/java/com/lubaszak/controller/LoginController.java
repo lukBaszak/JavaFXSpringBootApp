@@ -1,6 +1,8 @@
 package com.lubaszak.controller;
 
+import com.lubaszak.bean.Product;
 import com.lubaszak.config.StageManager;
+import com.lubaszak.service.FoodService;
 import com.lubaszak.view.FxmlView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +27,9 @@ public class LoginController {
 	private StageManager stageManager;
 
 	@Autowired
+	private FoodService foodService;
+
+	@Autowired
 	private UserService userService;
 	@FXML
 	private TextField emailField;
@@ -44,8 +49,8 @@ public class LoginController {
 
 			boolean ifValid = userService.checkAuthentication(email, password);
 
-
-
+			Product product = foodService.getProductById("513fc9e73fe3ffd40300109f");
+			System.out.println(product.foodName);
 
 
 		}
