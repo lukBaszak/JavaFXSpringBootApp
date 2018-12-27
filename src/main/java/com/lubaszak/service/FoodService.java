@@ -1,13 +1,12 @@
 package com.lubaszak.service;
 
 import com.lubaszak.bean.Product;
-import com.lubaszak.bean.ProductInfo;
-
-import java.util.ArrayList;
+import com.lubaszak.bean.ProductResponse;
+import org.springframework.http.ResponseEntity;
 
 public interface FoodService {
 
-     ArrayList<ProductInfo> getProductByQuery(String query);
+     ResponseEntity<ProductResponse> getProductByQuery(String query);
 
      Product getProductById(String id);
 
