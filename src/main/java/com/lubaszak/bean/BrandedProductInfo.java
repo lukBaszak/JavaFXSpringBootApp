@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class ProductInfo {
+public class BrandedProductInfo {
 
     @JsonProperty("food_name")
     public String foodName;

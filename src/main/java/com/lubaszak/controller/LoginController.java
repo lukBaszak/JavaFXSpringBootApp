@@ -1,7 +1,5 @@
 package com.lubaszak.controller;
 
-import com.lubaszak.bean.Product;
-import com.lubaszak.bean.ProductInfo;
 import com.lubaszak.config.StageManager;
 import com.lubaszak.service.FoodService;
 import com.lubaszak.view.FxmlView;
@@ -16,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
-
 
 @Controller
 public class LoginController {
@@ -28,6 +24,7 @@ public class LoginController {
 	@Autowired
 	@Lazy
 	private StageManager stageManager;
+
 
 	@Autowired
 	private FoodService foodService;
@@ -50,11 +47,14 @@ public class LoginController {
 			email = emailField.getText();
 			password = passwordField.getText();
 
-			boolean ifValid = userService.checkAuthentication(email, password);
+			System.out.println(email + password);
+			boolean ifValid = userService.authenticate(email, password);
 
-			foodService.getProductByQuery("Big mac");
 
+			if(ifValid==true) {
 
+				stageManager.switchScene(FxmlView.USER);
+			}
 		}
 	}
 

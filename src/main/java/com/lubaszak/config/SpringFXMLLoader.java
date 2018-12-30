@@ -18,7 +18,7 @@ public class SpringFXMLLoader {
     private final ResourceBundle resourceBundle;
     private final ApplicationContext context;
 
-    @Autowired
+
     public SpringFXMLLoader(ApplicationContext context, ResourceBundle resourceBundle) {
         this.resourceBundle = resourceBundle;
         this.context = context;

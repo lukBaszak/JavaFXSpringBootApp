@@ -8,5 +8,5 @@ public interface UserService extends GenericService<User> {
 	
 	User findByEmail(String email);
 
-	boolean checkAuthentication(String email, String password);
+
 }

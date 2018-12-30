@@ -45,16 +45,8 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findAll();
 	}
 
-	@Override
-	public boolean authenticate(String username, String password){
-		User user = this.findByEmail(username);
-		if(user == null){
-			return false;
-		}else{
-			if(password.equals(user.getPassword())) return true;
-			else return false;
-		}
-	}
+
+
 
 	@Override
 	public User findByEmail(String email) {
@@ -62,7 +54,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean checkAuthentication(String email, String password) {
+	public boolean authenticate(String password, String email) {
 		User checkedUser = userRepository.findByEmail(email);
 
 		if (checkedUser != null) {
@@ -75,6 +67,7 @@ public class UserServiceImpl implements UserService {
 			return false;
 		}
 	}
+
 
 	@Override
 	public void deleteInBatch(List<User> users) {
