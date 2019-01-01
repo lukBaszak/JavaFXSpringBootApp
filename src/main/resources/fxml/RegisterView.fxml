@@ -9,7 +9,7 @@
    <children>
       <TextField fx:id="emailField" layoutX="43.0" layoutY="105.0" promptText="email" />
       <TextField fx:id="passwordField" layoutX="43.0" layoutY="161.0" promptText="password" />
-      <TextField fx:id="repeatedPasswordField" layoutX="43.0" layoutY="213.0" promptText="reapeat password" />
+      <TextField fx:id="repeatedPasswordField" layoutX="43.0" layoutY="213.0" promptText="repeat password" />
       <Button layoutX="91.0" layoutY="281.0" mnemonicParsing="false" onAction="#registerUser" text="Button" />
    </children>
 </Pane>

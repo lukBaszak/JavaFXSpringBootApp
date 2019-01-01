@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
+import java.util.prefs.Preferences;
+
 
 @Controller
 public class LoginController {
@@ -52,6 +54,9 @@ public class LoginController {
 
 
 			if(ifValid==true) {
+				Preferences prefs = Preferences.systemNodeForPackage(com.lubaszak.controller.UserController.class);
+				prefs.getBoolean("info", true);
+
 
 				stageManager.switchScene(FxmlView.USER);
 			}

@@ -1,11 +1,14 @@
 package com.lubaszak.controller;
 
 import com.lubaszak.bean.User;
+import com.lubaszak.config.StageManager;
 import com.lubaszak.service.UserService;
+import com.lubaszak.view.FxmlView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -13,6 +16,10 @@ public class RegisterController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    @Lazy
+    private StageManager stageManager;
 
     @FXML
     private TextField emailField;
@@ -28,6 +35,13 @@ public class RegisterController {
         if(getEmail() != null && getPassword().equals(getRepeatedPassword()) && getPassword() != null && getRepeatedPassword()!=null ) {
            if (userService.findByEmail(getEmail())==null) {
                userService.save(new User(getEmail(), getPassword()));
+               try {
+                   Thread.sleep(1500);
+                   stageManager.switchScene(FxmlView.LOGIN);
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+               }
+
 
            }
            else {
