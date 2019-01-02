@@ -27,20 +27,13 @@ public class HttpEntityProvider {
 
     @Bean
     public HttpEntity getHttpEntity() {
-
         HttpEntity<?> httpEntity = buildHttpEntity();
-
-
         return httpEntity;
     }
 
 
     private HttpEntity<String> buildHttpEntity() {
-
-
-
         return new HttpEntity<String>(getHeaders());
-
     }
 
     @Bean
