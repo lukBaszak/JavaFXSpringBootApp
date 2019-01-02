@@ -1,4 +1,4 @@
-package com.lubaszak.view;
+package com.lubaszak.utilities;
 
 import java.util.ResourceBundle;
 
