@@ -3,46 +3,49 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lubaszak.controller.UserController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lubaszak.controller.UserDetailsController">
    <children>
       <AnchorPane layoutX="9.0" layoutY="11.0" prefHeight="508.0" prefWidth="355.0">
          <children>
-            <Button layoutX="284.0" layoutY="2.0" mnemonicParsing="false" onAction="#saveUserSettings" prefHeight="21.0" prefWidth="71.0" text="Save" />
-            <ScrollPane layoutX="12.0" layoutY="40.0" prefHeight="454.0" prefWidth="331.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <content>
-                  <AnchorPane accessibleRole="LIST_VIEW" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="339.0">
-                     <children>
-                        <Button layoutX="134.0" layoutY="558.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="71.0" text="Save" />
-                        <Text layoutX="8.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tell me something about yourself" textAlignment="CENTER" wrappingWidth="323.13671875">
-                           <font>
-                              <Font size="21.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#000000bc" layoutX="14.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex:" wrappingWidth="100.13671875" />
-                        <DatePicker fx:id="dateOfBirth" layoutX="13.0" layoutY="142.0" prefHeight="25.0" prefWidth="116.0" />
-                        <Text fill="#000000ba" layoutX="13.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:" wrappingWidth="81.13671875" />
-                        <Text fill="#000000ba" layoutX="13.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height" />
-                        <TextField fx:id="heightField" layoutX="13.0" layoutY="195.0" onInputMethodTextChanged="#printHey" onTouchReleased="#printHello" prefHeight="25.0" prefWidth="116.0" promptText="cm" />
-                        <Text fill="#000000bb" layoutX="11.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight" />
-                        <TextField fx:id="weightField" layoutX="13.0" layoutY="251.0" prefHeight="25.0" prefWidth="116.0" promptText="kg" />
-                        <Text fill="#000000b9" layoutX="13.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of activity" wrappingWidth="115.13671875" />
-                        <RadioButton fx:id="reallyLowActivityButton" layoutX="10.0" layoutY="312.0" mnemonicParsing="false" text="Really low" />
-                        <RadioButton fx:id="lowActivityButton" layoutX="10.0" layoutY="339.0" mnemonicParsing="false" text="Low" />
-                        <RadioButton fx:id="mediumActivityButton" layoutX="10.0" layoutY="368.0" mnemonicParsing="false" text="Medium" />
-                        <RadioButton fx:id="highActivityButton" layoutX="10.0" layoutY="395.0" mnemonicParsing="false" text="High" />
-                        <RadioButton fx:id="maleButton" layoutX="10.0" layoutY="88.0" mnemonicParsing="false" text="Man" />
-                        <RadioButton fx:id="femaleButton" layoutX="76.0" layoutY="88.0" mnemonicParsing="false" text="Female" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
+            <AnchorPane accessibleRole="LIST_VIEW" layoutX="14.0" layoutY="25.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="549.0" prefWidth="338.0">
+               <children>
+                  <Text layoutX="7.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tell me something about yourself" textAlignment="CENTER" wrappingWidth="323.13671875">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#000000bc" layoutX="14.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sex:" wrappingWidth="100.13671875" />
+                  <DatePicker fx:id="dateOfBirth" layoutX="13.0" layoutY="142.0" prefHeight="25.0" prefWidth="116.0" />
+                  <Text fill="#000000ba" layoutX="13.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:" wrappingWidth="81.13671875" />
+                  <Text fx:id="heightLabel" fill="#000000ba" layoutX="13.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height" />
+                  <TextField fx:id="heightField" layoutX="13.0" layoutY="195.0" prefHeight="25.0" prefWidth="116.0" promptText="cm" />
+                  <Text fill="#000000bb" layoutX="11.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight" />
+                  <TextField fx:id="weightField" layoutX="13.0" layoutY="251.0" prefHeight="25.0" prefWidth="116.0" promptText="kg" />
+                  <Text fill="#000000b9" layoutX="13.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of activity" wrappingWidth="115.13671875" />
+                  <RadioButton fx:id="reallyLowActivityButton" layoutX="10.0" layoutY="312.0" mnemonicParsing="false" text="Really low">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="activityToggleGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="lowActivityButton" layoutX="10.0" layoutY="339.0" mnemonicParsing="false" text="Low" toggleGroup="$activityToggleGroup" />
+                  <RadioButton fx:id="mediumActivityButton" layoutX="10.0" layoutY="368.0" mnemonicParsing="false" text="Medium" toggleGroup="$activityToggleGroup" />
+                  <RadioButton fx:id="highActivityButton" layoutX="10.0" layoutY="395.0" mnemonicParsing="false" text="High" toggleGroup="$activityToggleGroup" />
+                  <RadioButton fx:id="maleButton" layoutX="10.0" layoutY="88.0" mnemonicParsing="false" text="Man">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sexToggleGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="femaleButton" layoutX="76.0" layoutY="88.0" mnemonicParsing="false" text="Female" toggleGroup="$sexToggleGroup" />
+                  <Button layoutX="267.0" layoutY="422.0" mnemonicParsing="false" onAction="#saveUserSettings" prefHeight="21.0" prefWidth="71.0" text="Save" />
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
    </children>
 </Pane>
