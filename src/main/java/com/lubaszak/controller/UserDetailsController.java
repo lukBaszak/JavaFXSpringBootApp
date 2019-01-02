@@ -1,6 +1,7 @@
 package com.lubaszak.controller;
 
 import com.lubaszak.bean.UserDetails;
+import com.lubaszak.service.UserDetailsStoringService;
 import com.lubaszak.utilities.Activity;
 import com.lubaszak.utilities.Sex;
 import javafx.event.ActionEvent;
@@ -18,6 +19,8 @@ import java.util.ResourceBundle;
 public class UserDetailsController implements Initializable {
 
 
+    @Autowired
+    UserDetailsStoringService userDetailsStoringService;
 
     @FXML
     private RadioButton maleButton;
@@ -60,6 +63,7 @@ public class UserDetailsController implements Initializable {
         else {
             user = new UserDetails(getSex(), getBirthDate(), getHeight(),getWeight(), getActivityLevel());
             System.out.println("done");
+            userDetailsStoringService.saveUserMeasurement(user);
 
         }
     }
@@ -80,12 +84,14 @@ public class UserDetailsController implements Initializable {
     public Enum<Sex> getSex() {
         String selected = activityToggleGroup.getSelectedToggle().toString();
 
+
         if(selected==getButtonText(maleButton)) {
             return Sex.MAN;
         }
 
         else if(selected==getButtonText(femaleButton)) {
             return Sex.WOMAN;
+
         }
 
         return null;
