@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import org.slf4j.Logger;
 
-import com.lubaszak.view.FxmlView;
+import com.lubaszak.utilities.FxmlView;
 
 import javafx.application.Platform;
 import javafx.scene.Parent;

@@ -2,7 +2,7 @@ package com.lubaszak.controller;
 
 import com.lubaszak.config.StageManager;
 import com.lubaszak.service.FoodService;
-import com.lubaszak.view.FxmlView;
+import com.lubaszak.utilities.FxmlView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -54,7 +54,7 @@ public class LoginController {
 
 
 			if(ifValid==true) {
-				Preferences prefs = Preferences.systemNodeForPackage(com.lubaszak.controller.UserController.class);
+				Preferences prefs = Preferences.systemNodeForPackage(com.lubaszak.controller.UserDetailsController.class);
 				prefs.getBoolean("info", true);
 
 

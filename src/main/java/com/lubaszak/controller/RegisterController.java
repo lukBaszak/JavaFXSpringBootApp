@@ -3,7 +3,7 @@ package com.lubaszak.controller;
 import com.lubaszak.bean.User;
 import com.lubaszak.config.StageManager;
 import com.lubaszak.service.UserService;
-import com.lubaszak.view.FxmlView;
+import com.lubaszak.utilities.FxmlView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
