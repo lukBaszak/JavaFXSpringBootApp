@@ -1,15 +1,20 @@
 package com.lubaszak.bean;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.lubaszak.utilities.Activity;
+
 import com.lubaszak.utilities.Sex;
 
 import java.time.LocalDate;
 
 public class UserDetails {
+
+
     private Enum<Sex> sex;
     private LocalDate birthDate;
     private int height;
     private int weight;
+
     private Enum<Activity> activityLevel;
 
     public UserDetails(Enum<Sex> sex, LocalDate birthDate, int height, int weight, Enum<Activity> activityLevel) {

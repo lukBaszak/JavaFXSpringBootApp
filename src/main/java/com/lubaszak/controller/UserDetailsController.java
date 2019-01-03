@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -18,6 +19,8 @@ import java.util.ResourceBundle;
 @Controller
 public class UserDetailsController implements Initializable {
 
+    private Sex sex;
+    private Activity activity;
 
     @Autowired
     UserDetailsStoringService userDetailsStoringService;
@@ -62,7 +65,7 @@ public class UserDetailsController implements Initializable {
         }
         else {
             user = new UserDetails(getSex(), getBirthDate(), getHeight(),getWeight(), getActivityLevel());
-            System.out.println("done");
+
             userDetailsStoringService.saveUserMeasurement(user);
 
         }
@@ -85,35 +88,38 @@ public class UserDetailsController implements Initializable {
         String selected = activityToggleGroup.getSelectedToggle().toString();
 
 
+
         if(selected==getButtonText(maleButton)) {
-            return Sex.MAN;
+            sex = Sex.MAN;
         }
 
         else if(selected==getButtonText(femaleButton)) {
-            return Sex.WOMAN;
+            sex = Sex.WOMAN;
 
         }
 
-        return null;
+        return sex;
     }
 
     public Enum<Activity> getActivityLevel() {
-        String selected = activityToggleGroup.getSelectedToggle().toString();
+        RadioButton selected = (RadioButton) activityToggleGroup.getSelectedToggle();
 
-        if(selected== getButtonText(reallyLowActivityButton)) {
-           return Activity.VERY_LOW;
+
+        if(selected== reallyLowActivityButton) {
+          activity= Activity.VERY_LOW;
         }
-        else if(selected == getButtonText(lowActivityButton)) {
-            return Activity.LOW;
+        else if(selected == lowActivityButton) {
+            activity= Activity.LOW;
         }
-        else if(selected == getButtonText(mediumActivityButton)) {
-            return Activity.MEDIUM;
+        else if(selected == mediumActivityButton) {
+            activity= Activity.MEDIUM;
         }
-        else if(selected == getButtonText(highActivityButton)) {
-            return Activity.HIGH;
+        else if(selected == highActivityButton) {
+            activity= Activity.HIGH;
         }
 
-        return null;
+
+        return activity;
     }
 
 

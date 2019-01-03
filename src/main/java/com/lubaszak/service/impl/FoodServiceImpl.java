@@ -1,13 +1,12 @@
 package com.lubaszak.service.impl;
 
+import com.lubaszak.bean.Product;
 import com.lubaszak.bean.ProductResponse;
 import com.lubaszak.bean.ProductResponse2;
 import com.lubaszak.config.HttpEntityProvider;
 import com.lubaszak.config.RestConfig;
-import com.lubaszak.bean.Product;
 import com.lubaszak.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
