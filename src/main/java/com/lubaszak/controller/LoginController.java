@@ -1,7 +1,10 @@
 package com.lubaszak.controller;
 
+import com.lubaszak.bean.UserDetails;
 import com.lubaszak.config.StageManager;
 import com.lubaszak.service.FoodService;
+import com.lubaszak.service.impl.UserDetailsStoringServiceImpl;
+import com.lubaszak.utilities.Activity;
 import com.lubaszak.utilities.FxmlView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +30,8 @@ public class LoginController {
 	@Lazy
 	private StageManager stageManager;
 
+	@Autowired
+	UserDetailsStoringServiceImpl userDetailsStoringService;
 
 	@Autowired
 	private FoodService foodService;
@@ -54,8 +59,10 @@ public class LoginController {
 
 
 			if(ifValid==true) {
-				Preferences prefs = Preferences.systemNodeForPackage(com.lubaszak.controller.UserDetailsController.class);
-				prefs.getBoolean("info", true);
+
+
+				userDetailsStoringService.getUserMeasurement();
+
 
 
 				stageManager.switchScene(FxmlView.USER);
