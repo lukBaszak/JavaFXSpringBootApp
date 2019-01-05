@@ -7,17 +7,17 @@ import com.lubaszak.utilities.Sex;
 
 import java.time.LocalDate;
 
-public class UserDetails {
+public class UserDetail {
 
 
-    private Enum<Sex> sex;
+    private Sex sex;
     private LocalDate birthDate;
-    private int height;
-    private int weight;
+    private double height;
+    private double weight;
 
-    private Enum<Activity> activityLevel;
+    private Activity activityLevel;
 
-    public UserDetails(Enum<Sex> sex, LocalDate birthDate, int height, int weight, Enum<Activity> activityLevel) {
+    public UserDetail(Sex sex, LocalDate birthDate, double height, double weight, Activity activityLevel) {
         this.sex = sex;
         this.birthDate = birthDate;
         this.height = height;
@@ -25,13 +25,13 @@ public class UserDetails {
         this.activityLevel = activityLevel;
     }
 
-    public UserDetails() {}
+    public UserDetail() {}
 
     public Enum getSex() {
         return sex;
     }
 
-    public void setSex(Enum sex) {
+    public void setSex(Sex sex) {
         this.sex = sex;
     }
 
@@ -43,7 +43,7 @@ public class UserDetails {
         this.birthDate = birthDate;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
@@ -51,7 +51,7 @@ public class UserDetails {
         this.height = height;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -59,11 +59,11 @@ public class UserDetails {
         this.weight = weight;
     }
 
-    public Enum<Activity> getActivityLevel() {
+    public Activity getActivityLevel() {
         return activityLevel;
     }
 
-    public void setActivityLevel(Enum<Activity> activityLevel) {
+    public void setActivityLevel(Activity activityLevel) {
         this.activityLevel = activityLevel;
     }
 }

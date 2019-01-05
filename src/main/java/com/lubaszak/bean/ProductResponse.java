@@ -9,7 +9,7 @@ public class ProductResponse {
     private BrandedProductInfo[] branded;
 
     @JsonProperty("common")
-    private CommonFoodInfo[] common;
+    private CommonProductInfo[] common;
 
     public BrandedProductInfo[] getBranded() {
         return branded;
@@ -19,11 +19,11 @@ public class ProductResponse {
         this.branded = branded;
     }
 
-    public CommonFoodInfo[] getCommon() {
+    public CommonProductInfo[] getCommon() {
         return common;
     }
 
-    public void setCommon(CommonFoodInfo[] common) {
+    public void setCommon(CommonProductInfo[] common) {
         this.common = common;
     }
 
@@ -81,7 +81,7 @@ public class ProductResponse {
         }
     }
 
-     public static class CommonFoodInfo {
+     public static class CommonProductInfo {
 
         @JsonProperty("food_name")
         private String foodName;
