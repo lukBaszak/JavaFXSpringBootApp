@@ -6,29 +6,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "food_name",
-        "brand_name",
-        "serving_qty",
-        "serving_unit",
-        "serving_weight_grams",
-        "nf_calories",
-        "nf_total_fat",
-        "nf_saturated_fat",
-        "nf_cholesterol",
-        "nf_sodium",
-        "nf_total_carbohydrate",
-        "nf_dietary_fiber",
-        "nf_sugars",
-        "nf_protein",
-        "nf_potassium",
-        "nf_p",
-        "nix_brand_name",
-        "nix_brand_id",
-        "nix_item_name",
-        "nix_item_id"
-})
+
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)

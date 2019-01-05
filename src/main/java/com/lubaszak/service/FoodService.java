@@ -3,12 +3,12 @@ package com.lubaszak.service;
 import com.lubaszak.bean.Product;
 import com.lubaszak.bean.ProductResponse;
 
+import java.util.List;
+
 public interface FoodService {
 
-     ProductResponse getProductByQuery(String query);
+     List<Product> getProductsByQuery(String query);
 
-     Product getProductById(String id);
 
-     Product getProductByName(String name);
 
 }

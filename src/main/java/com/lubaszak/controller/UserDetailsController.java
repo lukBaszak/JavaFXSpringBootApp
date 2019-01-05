@@ -1,6 +1,6 @@
 package com.lubaszak.controller;
 
-import com.lubaszak.bean.UserDetails;
+import com.lubaszak.bean.UserDetail;
 import com.lubaszak.service.UserDetailsStoringService;
 import com.lubaszak.utilities.Activity;
 import com.lubaszak.utilities.Sex;
@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -50,7 +49,7 @@ public class UserDetailsController implements Initializable {
 
 
 
-    private UserDetails user;
+    private UserDetail user;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,19 +63,21 @@ public class UserDetailsController implements Initializable {
         if(sexToggleGroup.selectedToggleProperty()==null) {
         }
         else {
-            user = new UserDetails(getSex(), getBirthDate(), getHeight(),getWeight(), getActivityLevel());
+            user = new UserDetail(getSex(), getBirthDate(), getHeight(),getWeight(), getActivityLevel());
 
             userDetailsStoringService.saveUserMeasurement(user);
+
+           userDetailsStoringService.getUserMeasurement();
 
         }
     }
 
 
-    public int getHeight() {
+    public double getHeight() {
         return Integer.parseInt(heightField.getText());
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return Integer.parseInt(weightField.getText());
     }
 
@@ -84,16 +85,16 @@ public class UserDetailsController implements Initializable {
         return dateOfBirth.getValue();
     }
 
-    public Enum<Sex> getSex() {
-        String selected = activityToggleGroup.getSelectedToggle().toString();
+    public Sex getSex() {
+        RadioButton selected = (RadioButton) sexToggleGroup.getSelectedToggle();
 
 
 
-        if(selected==getButtonText(maleButton)) {
+        if(selected== maleButton) {
             sex = Sex.MAN;
         }
 
-        else if(selected==getButtonText(femaleButton)) {
+        else if(selected==femaleButton) {
             sex = Sex.WOMAN;
 
         }
@@ -101,7 +102,7 @@ public class UserDetailsController implements Initializable {
         return sex;
     }
 
-    public Enum<Activity> getActivityLevel() {
+    public Activity getActivityLevel() {
         RadioButton selected = (RadioButton) activityToggleGroup.getSelectedToggle();
 
 

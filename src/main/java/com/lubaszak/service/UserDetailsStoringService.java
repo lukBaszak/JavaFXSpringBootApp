@@ -1,12 +1,12 @@
 package com.lubaszak.service;
 
-import com.lubaszak.bean.UserDetails;
+import com.lubaszak.bean.UserDetail;
 
 
 
 public interface UserDetailsStoringService {
 
-    public UserDetails getUserMeasurement();
-    public void saveUserMeasurement(UserDetails userDetails);
+    public UserDetail getUserMeasurement();
+    public void saveUserMeasurement(UserDetail userDetail);
 
 }

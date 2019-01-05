@@ -1,10 +1,8 @@
 package com.lubaszak.controller;
 
-import com.lubaszak.bean.UserDetails;
 import com.lubaszak.config.StageManager;
 import com.lubaszak.service.FoodService;
 import com.lubaszak.service.impl.UserDetailsStoringServiceImpl;
-import com.lubaszak.utilities.Activity;
 import com.lubaszak.utilities.FxmlView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
-
-import java.util.prefs.Preferences;
 
 
 @Controller
@@ -60,11 +56,8 @@ public class LoginController {
 
 			if(ifValid==true) {
 
-
-				userDetailsStoringService.getUserMeasurement();
-
-
-
+				foodService.getProductsByQuery("bread");
+				System.out.println(userDetailsStoringService.getUserMeasurement().getActivityLevel());
 				stageManager.switchScene(FxmlView.USER);
 			}
 		}
@@ -73,17 +66,14 @@ public class LoginController {
 	@FXML
 	void registerUser(ActionEvent event) {
 		stageManager.switchScene(FxmlView.REGISTER);
-
 	}
 
 
 	private String getPassword() {
-
 		return passwordField.getText();
 	}
 
 	private String getUsername() {
 		return emailField.getText();
-
 	}
 }

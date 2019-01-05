@@ -5,7 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.gson.Gson;
-import com.lubaszak.bean.UserDetails;
+import com.google.gson.GsonBuilder;
+import com.lubaszak.bean.UserDetail;
 import com.lubaszak.service.UserDetailsStoringService;
 import com.lubaszak.utilities.ProjectPathProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,44 +18,37 @@ import java.io.*;
 @Service
 public class UserDetailsStoringServiceImpl implements UserDetailsStoringService {
 
-    ObjectMapper mapper = new ObjectMapper()
-            .registerModule(new JavaTimeModule())
-            .enable(SerializationFeature.WRITE_ENUMS_USING_TO_STRING)
-            .enable(DeserializationFeature.READ_ENUMS_USING_TO_STRING);
-    UserDetails testObj;
-
     @Autowired
     ProjectPathProvider projectPathProvider;
-
     BufferedReader bufferedReader;
 
     @Override
-    public UserDetails getUserMeasurement() {
+    public UserDetail getUserMeasurement() {
 
         try {
-            bufferedReader = new BufferedReader(new FileReader(projectPathProvider.getProjectPath()+"\\src\\main\\resources\\UserInformation\\user.json"));
-
-        } catch (FileNotFoundException e) { }
-
+            bufferedReader = new BufferedReader(new FileReader(projectPathProvider.getProjectPath() + "\\src\\main\\resources\\UserInformation\\user.json"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         Gson gson = new Gson();
-
-        UserDetails userDetails = gson.fromJson(bufferedReader, UserDetails.class);
-
-
-        return userDetails;
+        UserDetail userDetail = gson.fromJson(bufferedReader, UserDetail.class);
+        return userDetail;
     }
 
     @Override
-    public void saveUserMeasurement(UserDetails userDetails) {
+    public void saveUserMeasurement(UserDetail userDetail) {
 
-Gson gson = new Gson();
-
+        Writer writer;
         try {
-            gson.toJson(userDetails, new FileWriter(projectPathProvider.getProjectPath()+"\\src\\main\\resources\\UserInformation\\user.json"));
+
+            writer = new FileWriter(projectPathProvider.getProjectPath() + "\\src\\main\\resources\\UserInformation\\user.json");
+            Gson gson = new GsonBuilder().create();
+            gson.toJson(userDetail, writer);
+
+            writer.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }

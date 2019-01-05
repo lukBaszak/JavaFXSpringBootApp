@@ -29,7 +29,7 @@ public class StageManager {
 
     public void switchScene(final FxmlView view) {
         Parent viewRootNodeHierarchy = loadViewNodeHierarchy(view.getFxmlFile());
-        System.out.println(viewRootNodeHierarchy);
+
         show(viewRootNodeHierarchy, view.getTitle());
     }
     
