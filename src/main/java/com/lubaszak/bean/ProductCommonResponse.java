@@ -2,7 +2,7 @@ package com.lubaszak.bean;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class ProductResponse2 {
+public class ProductCommonResponse {
     @JsonProperty("foods")
     private Product[] products;
 
