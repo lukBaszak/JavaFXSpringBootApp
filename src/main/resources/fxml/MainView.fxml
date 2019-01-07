@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lubaszak.controller.MainController">
+   <children>
+      <AnchorPane prefHeight="599.0" prefWidth="501.0">
+         <children>
+            <DatePicker layoutX="25.0" layoutY="14.0" />
+            <ScrollPane layoutX="35.0" layoutY="77.0" prefHeight="350.0" prefWidth="298.0">
+               <content>
+                  <VBox prefHeight="348.0" prefWidth="296.0">
+                     <children>
+                        <AnchorPane prefHeight="96.0" prefWidth="296.0" style="-fx-background-color: #dee0df;">
+                           <children>
+                              <Text layoutX="28.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
+                              <Text layoutX="90.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbon:" />
+                              <Text layoutX="174.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein:" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="96.0" prefWidth="296.0" />
+                        <AnchorPane prefHeight="96.0" prefWidth="281.0" style="-fx-background-color: #dee0df;" />
+                        <AnchorPane prefHeight="96.0" prefWidth="296.0" />
+                        <AnchorPane prefHeight="96.0" prefWidth="296.0" style="-fx-background-color: #dee0df;" />
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
