@@ -1,7 +1,8 @@
 package com.lubaszak.service;
 
-import com.lubaszak.bean.UserDetail;
+import com.lubaszak.model.UserDetail;
 
+import java.time.LocalDate;
 
 
 public interface UserDetailsStoringService {

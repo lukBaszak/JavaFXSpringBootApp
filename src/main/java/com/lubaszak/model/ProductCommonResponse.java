@@ -1,4 +1,4 @@
-package com.lubaszak.bean;
+package com.lubaszak.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

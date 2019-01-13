@@ -1,6 +1,6 @@
 package com.lubaszak.service;
 
-import com.lubaszak.bean.User;
+import com.lubaszak.model.User;
 
 public interface UserService extends GenericService<User> {
 

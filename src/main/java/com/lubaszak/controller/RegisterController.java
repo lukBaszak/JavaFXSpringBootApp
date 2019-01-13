@@ -1,12 +1,14 @@
 package com.lubaszak.controller;
 
-import com.lubaszak.bean.User;
+import com.lubaszak.model.User;
 import com.lubaszak.config.StageManager;
 import com.lubaszak.service.UserService;
-import com.lubaszak.utilities.FxmlView;
+import com.lubaszak.utils.FxmlView;
+import com.lubaszak.utils.RegexPattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,12 @@ public class RegisterController {
     private StageManager stageManager;
 
     @FXML
+    private Text passwordMessage;
+
+    @FXML
+    private Text emailMessage;
+
+    @FXML
     private TextField emailField;
 
     @FXML
@@ -32,26 +40,55 @@ public class RegisterController {
 
     @FXML
     void registerUser(ActionEvent event) {
-        if(getEmail() != null && getPassword().equals(getRepeatedPassword()) && getPassword() != null && getRepeatedPassword()!=null ) {
-           if (userService.findByEmail(getEmail())==null) {
-               userService.save(new User(getEmail(), getPassword()));
-               try {
-                   Thread.sleep(1500);
-                   stageManager.switchScene(FxmlView.LOGIN);
-               } catch (InterruptedException e) {
-                   e.printStackTrace();
-               }
+        boolean isEmailValid = false;
+        boolean isPasswordValid = false;
 
-
-           }
-           else {
-               System.out.println("Błąd");
-           }
+        if(getEmail().matches(RegexPattern.EMAIL_PATTERN)) {
+            if (userService.findByEmail(getEmail()) == null) {
+                isEmailValid = true;
+                emailMessage.setVisible(false);
+            }
+            else {
+                emailMessage.setText("email already in use, choose another one");
+                emailMessage.setVisible(true);
+                isEmailValid = false;
+            }
         }
         else {
-            System.out.println("Błednie wprowadzone dane");
+            emailMessage.setText("Wrong email format");
+            emailMessage.setVisible(true);
+            isEmailValid = false;
+           }
+
+
+
+        if( getPassword().matches(RegexPattern.PASSWORD_PATTERN)) {
+            if(getPassword().equals(getRepeatedPassword())) {
+                isPasswordValid = true;
+                passwordMessage.setVisible(false);
+            }
+            else {
+                passwordMessage.setText("Passwords are not equal");
+                passwordMessage.setVisible(true);
+                isPasswordValid = false;
+            }
         }
-    }
+        else {
+            passwordMessage.setText("Password has to contain at least 6 characters including one letter and one number");
+            passwordMessage.setVisible(true);
+            isPasswordValid = false;
+        }
+
+        if(isPasswordValid&&isEmailValid) {
+
+            userService.save(new User(getEmail(), getPassword()));
+
+            stageManager.switchScene(FxmlView.LOGIN);
+
+        }
+        }
+
+
 
 
     public String getEmail() {
@@ -65,4 +102,9 @@ public class RegisterController {
     public String getRepeatedPassword() {
         return repeatedPasswordField.getText();
     }
+
+    private boolean arePasswordTheSame(String first, String second) {
+        return first.equals(second);
+    }
+
 }

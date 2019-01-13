@@ -1,8 +1,8 @@
 package com.lubaszak.service.impl;
 
-import com.lubaszak.bean.Product;
-import com.lubaszak.bean.ProductResponse;
-import com.lubaszak.bean.ProductCommonResponse;
+import com.lubaszak.model.Product;
+import com.lubaszak.model.ProductResponse;
+import com.lubaszak.model.ProductCommonResponse;
 import com.lubaszak.config.HttpEntityProvider;
 import com.lubaszak.config.RestConfig;
 import com.lubaszak.service.FoodService;
@@ -51,10 +51,6 @@ public class FoodServiceImpl implements FoodService {
             Product product = getProductById(brandedProductInfos[i].getNixItemId());
             productList.add(product);
         }
-
-
-
-
         return productList;
     }
 
@@ -66,19 +62,14 @@ public class FoodServiceImpl implements FoodService {
         return product.getBody();
     }
 
-
     private Product getProductByName(String itemName) {
-
 
 
         HttpHeaders headers = httpEntityProvider.getHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
         MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
         map.add("query", itemName);
-
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
-
         ResponseEntity<ProductCommonResponse> response = restConfig.createRestTemplate().postForEntity("https://trackapi.nutritionix.com/v2/natural/nutrients/", request , ProductCommonResponse.class );
 
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -7,16 +8,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lubaszak.controller.MainController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lubaszak.controller.MainController">
    <children>
-      <AnchorPane prefHeight="599.0" prefWidth="501.0">
+      <AnchorPane prefHeight="529.0" prefWidth="436.0">
          <children>
-            <DatePicker layoutX="25.0" layoutY="14.0" />
-            <ScrollPane layoutX="35.0" layoutY="77.0" prefHeight="350.0" prefWidth="298.0">
-               <content>
-                  <VBox prefHeight="348.0" prefWidth="296.0">
+            <VBox id="firstSubVBox" fx:id="firstSubVBox" layoutX="352.0" layoutY="120.0" styleClass="vBox">
+               <children>
+                  <Button fx:id="firstMenu" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu" text="First Menu" />
+                  <VBox fx:id="firstSubMenuList" styleClass="subVBox">
                      <children>
-                        <AnchorPane prefHeight="96.0" prefWidth="296.0" style="-fx-background-color: #dee0df;">
+                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
+                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
+                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
+                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <DatePicker layoutX="25.0" layoutY="14.0" />
+            <ScrollPane layoutX="35.0" layoutY="77.0" prefHeight="315.0" prefWidth="306.0">
+               <content>
+                  <VBox prefHeight="299.0" prefWidth="303.0">
+                     <children>
+                        <AnchorPane onMouseClicked="#clicked" prefHeight="96.0" prefWidth="296.0" style="-fx-background-color: #dee0df;">
                            <children>
                               <Text layoutX="28.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
                               <Text layoutX="90.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbon:" />

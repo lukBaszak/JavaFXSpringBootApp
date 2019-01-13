@@ -3,13 +3,14 @@ package com.lubaszak.controller;
 import com.lubaszak.config.StageManager;
 import com.lubaszak.service.FoodService;
 import com.lubaszak.service.impl.UserDetailsStoringServiceImpl;
-import com.lubaszak.utilities.FxmlView;
+import com.lubaszak.utils.FxmlView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import com.lubaszak.service.UserService;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Lazy;
@@ -34,6 +35,10 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
+
+	@FXML
+	private Text errorMessage;
+
 	@FXML
 	private TextField emailField;
 
@@ -45,22 +50,34 @@ public class LoginController {
 
 	@FXML
 	void loginUser(ActionEvent event) {
-		if (getPassword() != null && getUsername() != null) {
 
+		if (!emailField.getText().trim().isEmpty() && !passwordField.getText().trim().isEmpty() ) {
+
+			System.out.println("logging");
 			email = emailField.getText();
 			password = passwordField.getText();
 
-			System.out.println(email + password);
 			boolean ifValid = userService.authenticate(email, password);
 
+			if(ifValid) {
 
-			if(ifValid==true) {
-
-				foodService.getProductsByQuery("bread");
-				System.out.println(userDetailsStoringService.getUserMeasurement().getActivityLevel());
-				stageManager.switchScene(FxmlView.USER);
+				if(userDetailsStoringService.getUserMeasurement()==null) {
+					stageManager.switchScene(FxmlView.USER_DETAIL);
+				}
+				else stageManager.switchScene(FxmlView.MAIN);
+			}
+			else {
+				errorMessage.setText("Wrong login"); //add reference to external file with error messages
+				errorMessage.setVisible(true);
 			}
 		}
+
+		else {
+
+			errorMessage.setText("please input correct email and password");
+			errorMessage.setVisible(true);
+		}
+
 	}
 
 	@FXML

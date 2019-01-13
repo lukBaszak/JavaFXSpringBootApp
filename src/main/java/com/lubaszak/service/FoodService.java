@@ -1,7 +1,6 @@
 package com.lubaszak.service;
 
-import com.lubaszak.bean.Product;
-import com.lubaszak.bean.ProductResponse;
+import com.lubaszak.model.Product;
 
 import java.util.List;
 

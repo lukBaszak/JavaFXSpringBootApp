@@ -1,9 +1,9 @@
 package com.lubaszak.controller;
 
-import com.lubaszak.bean.UserDetail;
+import com.lubaszak.model.UserDetail;
 import com.lubaszak.service.UserDetailsStoringService;
-import com.lubaszak.utilities.Activity;
-import com.lubaszak.utilities.Sex;
+import com.lubaszak.utils.Activity;
+import com.lubaszak.utils.Sex;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -67,7 +67,7 @@ public class UserDetailsController implements Initializable {
 
             userDetailsStoringService.saveUserMeasurement(user);
 
-           userDetailsStoringService.getUserMeasurement();
+
 
         }
     }

@@ -1,10 +1,10 @@
-package com.lubaszak.utilities;
+package com.lubaszak.utils;
 
 import java.util.ResourceBundle;
 
 public enum FxmlView {
 
-    USER {
+    USER_DETAIL {
         @Override
 		public String getTitle() {
             return getStringFromResourceBundle("user.title");
@@ -35,6 +35,17 @@ public enum FxmlView {
         @Override
         public String getFxmlFile() {
             return "/fxml/RegisterView.fxml";
+        }
+    },
+
+    MAIN {
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("main.title");
+        }
+        @Override
+        public String getFxmlFile() {
+            return "/fxml/MainView.fxml";
         }
     }
     ;

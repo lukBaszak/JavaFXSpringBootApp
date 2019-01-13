@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import org.slf4j.Logger;
 
-import com.lubaszak.utilities.FxmlView;
+import com.lubaszak.utils.FxmlView;
 
 import javafx.application.Platform;
 import javafx.scene.Parent;
@@ -36,7 +36,7 @@ public class StageManager {
     private void show(final Parent rootnode, String title) {
         Scene scene = prepareScene(rootnode);
         //scene.getStylesheets().add("/styles/Styles.css");
-        
+        primaryStage.setResizable(false);
         //primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setTitle(title);
         primaryStage.setScene(scene);

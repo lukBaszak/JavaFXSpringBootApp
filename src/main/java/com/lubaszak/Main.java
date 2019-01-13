@@ -7,7 +7,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import com.lubaszak.config.StageManager;
-import com.lubaszak.utilities.FxmlView;
+import com.lubaszak.utils.FxmlView;
 
 @SpringBootApplication
 public class Main extends Application {

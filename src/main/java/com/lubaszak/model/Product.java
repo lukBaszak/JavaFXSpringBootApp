@@ -1,57 +1,53 @@
-package com.lubaszak.bean;
+package com.lubaszak.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
-
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 
     @JsonProperty("food_name")
-    public String foodName;
+     private String foodName;
     @JsonProperty("brand_name")
-    public String brandName;
+    private String brandName;
     @JsonProperty("serving_qty")
-    public Integer servingQty;
+    private Integer servingQty;
     @JsonProperty("serving_unit")
-    public String servingUnit;
+    private String servingUnit;
     @JsonProperty("serving_weight_grams")
-    public Integer servingWeightGrams;
+    private Integer servingWeightGrams;
     @JsonProperty("nf_calories")
-    public Integer calories;
+    private Integer calories;
     @JsonProperty("nf_total_fat")
-    public Integer totalFat;
+    private Integer totalFat;
     @JsonProperty("nf_saturated_fat")
-    public Integer saturatedFat;
+    private Integer saturatedFat;
     @JsonProperty("nf_cholesterol")
-    public Integer cholesterol;
+    private Integer cholesterol;
     @JsonProperty("nf_sodium")
-    public Integer sodium;
+    private Integer sodium;
     @JsonProperty("nf_total_carbohydrate")
-    public Integer totalCarbohydrate;
+    private Integer totalCarbohydrate;
     @JsonProperty("nf_dietary_fiber")
-    public Integer dietaryFiber;
+    private Integer dietaryFiber;
     @JsonProperty("nf_sugars")
-    public Integer sugars;
+    private Integer sugars;
     @JsonProperty("nf_protein")
-    public Integer protein;
+    private Integer protein;
     @JsonProperty("nf_potassium")
-    public Object potassium;
+    private Object potassium;
     @JsonProperty("nf_p")
-    public Object nfP;
+    private Object nfP;
     @JsonProperty("nix_brand_name")
-    public String nixBrandName;
+    private String nixBrandName;
     @JsonProperty("nix_brand_id")
-    public String nixBrandId;
+    private String nixBrandId;
     @JsonProperty("nix_item_name")
-    public String nixItemName;
+    private String nixItemName;
     @JsonProperty("nix_item_id")
-    public String nixItemId;
+    private String nixItemId;
 
 
     public String getFoodName() {

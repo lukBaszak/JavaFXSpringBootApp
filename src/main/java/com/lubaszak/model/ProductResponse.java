@@ -1,4 +1,4 @@
-package com.lubaszak.bean;
+package com.lubaszak.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,23 +33,23 @@ public class ProductResponse {
     public static class BrandedProductInfo {
 
         @JsonProperty("food_name")
-        public String foodName;
+        String foodName;
         @JsonProperty("serving_unit")
-        public String servingUnit;
+        String servingUnit;
         @JsonProperty("nix_brand_id")
-        public String nixBrandId;
+        String nixBrandId;
         @JsonProperty("brand_name_item_name")
-        public String brandNameItemName;
+        String brandNameItemName;
         @JsonProperty("serving_qty")
-        public Integer servingQty;
+         Integer servingQty;
         @JsonProperty("nf_calories")
-        public Integer nfCalories;
+        Integer nfCalories;
         @JsonProperty("brand_name")
-        public String brandName;
+         String brandName;
         @JsonProperty("brand_type")
-        public Integer brandType;
+         Integer brandType;
         @JsonProperty("nix_item_id")
-        public String nixItemId;
+         String nixItemId;
 
 
         public String getFoodName() {

@@ -1,4 +1,4 @@
-package com.lubaszak.utilities;
+package com.lubaszak.utils;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;
