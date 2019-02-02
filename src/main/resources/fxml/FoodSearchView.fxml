@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="357.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lubaszak.controller.FoodSearchController">
+   <children>
+      <AnchorPane prefHeight="426.0" prefWidth="357.0">
+         <children>
+            <TextField fx:id="searchField" layoutX="30.0" layoutY="34.0" onInputMethodTextChanged="#searchForFood" />
+            <ScrollPane layoutX="30.0" layoutY="67.0" prefHeight="330.0" prefWidth="304.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
