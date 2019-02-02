@@ -5,7 +5,7 @@ import com.lubaszak.model.ProductResponse;
 import com.lubaszak.model.ProductCommonResponse;
 import com.lubaszak.config.HttpEntityProvider;
 import com.lubaszak.config.RestConfig;
-import com.lubaszak.service.FoodService;
+import com.lubaszak.service.FoodProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -14,10 +14,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
-public class FoodServiceImpl implements FoodService {
+public class FoodProviderServiceImpl implements FoodProviderService {
 
     @Autowired
     RestConfig restConfig;
@@ -27,9 +28,9 @@ public class FoodServiceImpl implements FoodService {
 
 
     @Override
-    public ArrayList<Product> getProductsByQuery(@PathVariable String query) {
+    public List<Product> getProductsByQuery(@PathVariable String query) {
 
-        ArrayList<Product> productList = new ArrayList<>();
+        List<Product> productList = new ArrayList<>();
         HttpEntity<?> httpEntity = httpEntityProvider.getHttpEntity();
 
         ResponseEntity<ProductResponse> response =  restConfig.createRestTemplate()
@@ -40,29 +41,39 @@ public class FoodServiceImpl implements FoodService {
         ProductResponse.BrandedProductInfo[] brandedProductInfos = products.getBranded();
         ProductResponse.CommonProductInfo[] commonProductInfos = products.getCommon();
 
-        for(int i=0; i>commonProductInfos.length +1; i++)
+
+        for(int i=0; i<commonProductInfos.length ; i++)
         {
             Product product = getProductByName(commonProductInfos[i].getFoodName());
+
             productList.add(product);
+
         }
 
-        for(int i=0; i>brandedProductInfos.length +1; i++)
+        /*for(int i=0; i<brandedProductInfos.length; i++)
         {
             Product product = getProductById(brandedProductInfos[i].getNixItemId());
+            System.out.println(product.getBrandName());
             productList.add(product);
+
         }
+
+*/
+
+
         return productList;
     }
 
 
-    private Product getProductById(@PathVariable String itemId) {
+    public Product getProductById(@PathVariable String itemId) {
 
-        ResponseEntity<Product> product =  restConfig.createRestTemplate().exchange("https://trackapi.nutritionix.com/v2/search/item?nix_item_id={query}",HttpMethod.GET, httpEntityProvider.getHttpEntity(), Product.class ,itemId);
+        ResponseEntity<ProductCommonResponse> product =  restConfig.createRestTemplate().exchange("https://trackapi.nutritionix.com/v2/search/item?nix_item_id={query}",HttpMethod.GET, httpEntityProvider.getHttpEntity(), ProductCommonResponse.class ,itemId);
 
-        return product.getBody();
+
+        return product.getBody().getProduct();
     }
 
-    private Product getProductByName(String itemName) {
+    public Product getProductByName(String itemName) {
 
 
         HttpHeaders headers = httpEntityProvider.getHeaders();

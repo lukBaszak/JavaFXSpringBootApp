@@ -2,50 +2,80 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lubaszak.controller.MainController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="441.0" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lubaszak.controller.MainController">
    <children>
-      <AnchorPane prefHeight="529.0" prefWidth="436.0">
+      <AnchorPane prefHeight="550.0" prefWidth="493.0">
          <children>
-            <VBox id="firstSubVBox" fx:id="firstSubVBox" layoutX="352.0" layoutY="120.0" styleClass="vBox">
-               <children>
-                  <Button fx:id="firstMenu" alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="menu" text="First Menu" />
-                  <VBox fx:id="firstSubMenuList" styleClass="subVBox">
-                     <children>
-                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
-                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
-                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
-                        <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" />
-                     </children>
-                  </VBox>
-               </children>
-            </VBox>
-            <DatePicker layoutX="25.0" layoutY="14.0" />
-            <ScrollPane layoutX="35.0" layoutY="77.0" prefHeight="315.0" prefWidth="306.0">
+            <DatePicker fx:id="dataPicker" editable="false" layoutX="25.0" layoutY="14.0" />
+            <ScrollPane fx:id="scrollMenuPane" layoutX="34.0" layoutY="65.0" prefHeight="400.0" prefWidth="301.0">
                <content>
-                  <VBox prefHeight="299.0" prefWidth="303.0">
+                  <AnchorPane fx:id="dinnerPane" prefHeight="63.0" prefWidth="294.0" style="-fx-border-color: grey;">
                      <children>
-                        <AnchorPane onMouseClicked="#clicked" prefHeight="96.0" prefWidth="296.0" style="-fx-background-color: #dee0df;">
-                           <children>
-                              <Text layoutX="28.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
-                              <Text layoutX="90.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbon:" />
-                              <Text layoutX="174.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein:" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="96.0" prefWidth="296.0" />
-                        <AnchorPane prefHeight="96.0" prefWidth="281.0" style="-fx-background-color: #dee0df;" />
-                        <AnchorPane prefHeight="96.0" prefWidth="296.0" />
-                        <AnchorPane prefHeight="96.0" prefWidth="296.0" style="-fx-background-color: #dee0df;" />
+                        <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dinner" wrappingWidth="40.56444896757603" />
+                        <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
+                        <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein:" />
+                        <Text layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
+                        <Text layoutX="153.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbs:" />
+                        <Text fill="#f80000" layoutX="65.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="26.0" />
+                        <Text fx:id="dinnerProtText" layoutX="65.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="dinnerFatText" layoutX="124.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+                        <Text fx:id="dinnerCarbText" layoutX="189.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
                      </children>
-                  </VBox>
-               </content>
-            </ScrollPane>
+                  </AnchorPane>
+               </content></ScrollPane>
+            <Button layoutX="346.0" layoutY="65.0" mnemonicParsing="false" text="Button" />
+            <AnchorPane fx:id="lunchPane" layoutX="191.0" layoutY="144.0" prefHeight="63.0" prefWidth="294.0" style="-fx-border-color: grey;">
+               <children>
+                  <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lunch" wrappingWidth="40.56444896757603" />
+                  <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
+                  <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein:" />
+                  <Text layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
+                  <Text layoutX="153.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbs:" />
+                  <Text fx:id="lunchProtText" layoutX="65.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="26.0" />
+                  <Text fx:id="lunchCarbText" layoutX="191.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="26.0" />
+                  <Text fx:id="lunchFatText" layoutX="121.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="26.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="breakfastPane" layoutX="199.0" layoutY="256.0" prefHeight="63.0" prefWidth="294.0" style="-fx-border-color: grey;">
+               <children>
+                  <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Breakfast" wrappingWidth="52.00000196695328" />
+                  <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
+                  <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein:" />
+                  <Text layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
+                  <Text layoutX="153.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbs:" />
+                  <Text fill="#f80000" layoutX="65.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="26.0" />
+                  <Text fx:id="breakfastProtText" layoutX="65.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="26.0" />
+                  <Text fx:id="breakfastFatText" layoutX="127.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="26.0" />
+                  <Text fx:id="breakfastCarbText" layoutX="193.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="26.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="brunchPane" layoutX="185.0" layoutY="379.0" prefHeight="63.0" prefWidth="294.0" style="-fx-border-color: grey;">
+               <children>
+                  <Text layoutX="15.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brunch" wrappingWidth="78.13671875" />
+                  <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
+                  <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein:" />
+                  <Text layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
+                  <Text layoutX="153.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbs:" />
+                  <Text fill="#f80000" layoutX="65.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="26.0" />
+                  <Text fx:id="brunchProtText" layoutX="65.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="26.0" />
+                  <Text fx:id="brunchFatText" layoutX="127.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="26.0" />
+                  <Text fx:id="brunchCarbText" layoutX="194.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="26.0" />
+               </children>
+            </AnchorPane>
+            <Button fx:id="searchButton" layoutX="221.0" layoutY="14.0" mnemonicParsing="false" onAction="#loadMenuData" text="Button" />
+            <Text fx:id="testText" layoutX="335.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lul" />
+            <ProgressBar fx:id="proteinProgressBar" layoutX="34.0" layoutY="471.0" prefHeight="16.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="fatProgressBar" layoutX="34.0" layoutY="493.0" prefHeight="16.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="carbProgressBar" layoutX="34.0" layoutY="518.0" prefHeight="16.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="caloriesProgressBar" layoutX="34.0" layoutY="541.0" prefHeight="16.0" prefWidth="325.0" progress="0.0" />
          </children>
       </AnchorPane>
+      
    </children>
 </Pane>

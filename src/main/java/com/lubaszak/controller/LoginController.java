@@ -1,7 +1,8 @@
 package com.lubaszak.controller;
 
 import com.lubaszak.config.StageManager;
-import com.lubaszak.service.FoodService;
+import com.lubaszak.service.FoodMenuService;
+import com.lubaszak.service.FoodProviderService;
 import com.lubaszak.service.impl.UserDetailsStoringServiceImpl;
 import com.lubaszak.utils.FxmlView;
 import javafx.event.ActionEvent;
@@ -31,10 +32,13 @@ public class LoginController {
 	UserDetailsStoringServiceImpl userDetailsStoringService;
 
 	@Autowired
-	private FoodService foodService;
+	private FoodProviderService foodService;
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private FoodMenuService foodMenuService;
 
 	@FXML
 	private Text errorMessage;
@@ -51,11 +55,13 @@ public class LoginController {
 	@FXML
 	void loginUser(ActionEvent event) {
 
+
 		if (!emailField.getText().trim().isEmpty() && !passwordField.getText().trim().isEmpty() ) {
 
-			System.out.println("logging");
+
 			email = emailField.getText();
 			password = passwordField.getText();
+
 
 			boolean ifValid = userService.authenticate(email, password);
 
@@ -93,4 +99,6 @@ public class LoginController {
 	private String getUsername() {
 		return emailField.getText();
 	}
+
+
 }

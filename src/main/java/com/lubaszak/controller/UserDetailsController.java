@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 import java.net.URL;
@@ -22,6 +23,7 @@ public class UserDetailsController implements Initializable {
     private Activity activity;
 
     @Autowired
+    @Qualifier("userDetailsStoringServiceImpl")
     UserDetailsStoringService userDetailsStoringService;
 
     @FXML

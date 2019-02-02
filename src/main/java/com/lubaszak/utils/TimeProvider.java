@@ -1,10 +1,13 @@
 package com.lubaszak.utils;
 
 import org.springframework.stereotype.Service;
+
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAccessor;
 import java.util.Date;
 
 @Service
@@ -13,12 +16,9 @@ public class TimeProvider {
     public static final String TIME_PATTERN = "yy-MM-dd";
 
 
-    public String getCurrentDate() {
-
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(TIME_PATTERN);
-        LocalDate localDate = LocalDate.now();
-
-        return dtf.format(localDate);
+    public String getParticularStringDate(Date date) {
+       DateFormat dtf = new SimpleDateFormat(TIME_PATTERN);
+        return dtf.format(date);
     }
 
 

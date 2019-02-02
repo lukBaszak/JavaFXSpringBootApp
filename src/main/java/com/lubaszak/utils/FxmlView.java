@@ -14,6 +14,7 @@ public enum FxmlView {
 		public String getFxmlFile() {
             return "/fxml/UserView.fxml";
         }
+
     }, 
     LOGIN {
         @Override
@@ -25,6 +26,8 @@ public enum FxmlView {
 		public String getFxmlFile() {
             return "/fxml/LoginView.fxml";
         }
+
+
     },
     REGISTER {
         @Override
@@ -36,6 +39,8 @@ public enum FxmlView {
         public String getFxmlFile() {
             return "/fxml/RegisterView.fxml";
         }
+
+
     },
 
     MAIN {
@@ -47,11 +52,46 @@ public enum FxmlView {
         public String getFxmlFile() {
             return "/fxml/MainView.fxml";
         }
+
+
+    },
+
+    FOOD_SEARCH {
+        @Override
+        public String getTitle() {
+                return getStringFromResourceBundle("foodadd.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/fxml/FoodSearchView.fxml";
+        }
+
+
+    },
+
+    FOOD_INFO {
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("foodinfo.title");
+
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/fxml/FoodInfoView.fxml";
+        }
     }
+
+
+
+
+
     ;
     
     public abstract String getTitle();
     public abstract String getFxmlFile();
+
     
     String getStringFromResourceBundle(String key){
         return ResourceBundle.getBundle("Bundle").getString(key);

@@ -49,83 +49,68 @@ public class Product {
     @JsonProperty("nix_item_id")
     private String nixItemId;
 
+    private String quantity;
 
+
+    public String getQuantity() { return quantity; }
+    public void setQuantity(String quantity) { this.quantity = quantity; }
     public String getFoodName() {
         return foodName;
     }
-
     public String getBrandName() {
         return brandName;
     }
-
     public Integer getServingQty() {
         return servingQty;
     }
-
     public String getServingUnit() {
         return servingUnit;
     }
-
     public Integer getServingWeightGrams() {
         return servingWeightGrams;
     }
-
     public Integer getCalories() {
         return calories;
     }
-
     public Integer getTotalFat() {
         return totalFat;
     }
-
     public Integer getSaturatedFat() {
         return saturatedFat;
     }
-
     public Integer getCholesterol() {
         return cholesterol;
     }
-
     public Integer getSodium() {
         return sodium;
     }
-
     public Integer getTotalCarbohydrate() {
         return totalCarbohydrate;
     }
-
     public Integer getDietaryFiber() {
         return dietaryFiber;
     }
-
     public Integer getSugars() {
         return sugars;
     }
-
     public Integer getProtein() {
         return protein;
     }
-
     public Object getPotassium() {
         return potassium;
     }
-
     public Object getNfP() {
         return nfP;
     }
-
     public String getNixBrandName() {
         return nixBrandName;
     }
-
     public String getNixBrandId() {
         return nixBrandId;
     }
-
     public String getNixItemName() {
         return nixItemName;
     }
-
     public String getNixItemId() {
         return nixItemId;
     }
