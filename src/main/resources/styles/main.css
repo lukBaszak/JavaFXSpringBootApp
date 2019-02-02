@@ -1,0 +1,11 @@
+.root {
+    -fx-background-color: url("zdjecie.png");
+   /* -fx-background-color: red;*/
+
+}
+
+#product-pane {
+    -fx-background-color: #eaecef;
+    -fx-border-color: #5d5d5e;
+
+}
