@@ -1,4 +1,4 @@
-package com.lubaszak.model;
+package com.lubaszak.model.user;
 
 import javax.persistence.*;
 

@@ -1,6 +1,6 @@
 package com.lubaszak.controller;
 
-import com.lubaszak.model.User;
+import com.lubaszak.model.user.User;
 import com.lubaszak.config.StageManager;
 import com.lubaszak.service.UserService;
 import com.lubaszak.utils.FxmlView;

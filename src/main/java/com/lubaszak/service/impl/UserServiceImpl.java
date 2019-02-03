@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lubaszak.model.User;
-import com.lubaszak.repository.UserRepository;
+import com.lubaszak.model.user.User;
+import com.lubaszak.repository.user.UserRepository;
 import com.lubaszak.service.UserService;
 
 @Service

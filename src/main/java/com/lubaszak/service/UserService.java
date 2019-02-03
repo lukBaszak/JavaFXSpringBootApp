@@ -1,6 +1,6 @@
 package com.lubaszak.service;
 
-import com.lubaszak.model.User;
+import com.lubaszak.model.user.User;
 
 public interface UserService extends GenericService<User> {
 
