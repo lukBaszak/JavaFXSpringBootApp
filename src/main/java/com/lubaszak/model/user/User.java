@@ -2,13 +2,13 @@ package com.lubaszak.model.user;
 
 import javax.persistence.*;
 
-@Entity(name = "users")
-@Table(name = "users")
+@Entity
+@Table(name = "user")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "key")
+	@Column(name = "id")
 	private int id;
 	private String email;
 	private String password;

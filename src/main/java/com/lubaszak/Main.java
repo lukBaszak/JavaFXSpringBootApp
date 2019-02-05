@@ -8,8 +8,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import com.lubaszak.config.StageManager;
 import com.lubaszak.utils.FxmlView;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+
 public class Main extends Application {
 
     protected ConfigurableApplicationContext springContext;
@@ -41,7 +43,7 @@ public class Main extends Application {
      * window.
      */
     protected void displayInitialScene() {
-        stageManager.switchScene(FxmlView.MAIN);
+        stageManager.switchScene(FxmlView.LOGIN);
     }
 
     

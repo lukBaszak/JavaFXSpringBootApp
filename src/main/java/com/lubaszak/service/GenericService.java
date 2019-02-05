@@ -15,11 +15,11 @@ public interface GenericService<T extends Object> {
   
     void delete(T entity);
   
-    void delete(Long id);
+    void delete(Integer id);
     
     void deleteInBatch(List<T> entities);
   
-    T find(Long id);
+    T find(Integer id);
   
     List<T> findAll();
 }

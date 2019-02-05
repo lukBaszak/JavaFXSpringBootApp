@@ -1,39 +1,60 @@
 package com.lubaszak.model.menu;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.lubaszak.utils.MealTime;
+import org.springframework.context.annotation.Configuration;
+
+import javax.persistence.*;
 import java.util.Date;
+
 
 @Entity(name = "menu")
 @Table(name = "menu")
+
 public class Menu {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
-    private Date date;
-    private String mealTime;
-    @Column(name = "PRODUCT_NAME")
+    @Enumerated(EnumType.STRING)
+    @Column(name="meal_time")
+    private Enum<MealTime> mealTime;
+
+    @Column(name = "product_name")
     private String productName;
-    @Column(name = "PRODUCT_ID")
+
+    @Column(name = "product_id")
     private String productId;
+
     private int weight;
+
+
+
 
     public Menu() {
 
     }
 
-    public Menu(Date date, String mealTime, String productName, String productId, int weight) {
-        this.date = date;
+    public Menu(Enum<MealTime> mealTime, String productName, String productId, int weight) {
+
+
         this.mealTime = mealTime;
         this.productName = productName;
         this.productId = productId;
         this.weight = weight;
+
+
     }
 
-    public Date getDate() { return date; }
-    public void setDate(Date date) { this.date = date; }
-    public String getMealTime() { return mealTime; }
-    public void setMealTime(String mealTime) { this.mealTime = mealTime; }
+
+
+
+
+
+    public Enum<MealTime> getMealTime() { return mealTime; }
+    public void setMealTime(Enum<MealTime> mealTime) { this.mealTime = mealTime; }
     public String getProductName() { return productName; }
     public void setProductName(String productName) { this.productName = productName; }
     public String getProductId() { return productId; }
