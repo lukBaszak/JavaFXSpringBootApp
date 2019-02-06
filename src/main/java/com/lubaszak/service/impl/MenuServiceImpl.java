@@ -29,12 +29,11 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public void delete(Menu entity) {
-
+     menuRepository.delete(entity);
     }
 
     @Override
     public void delete(Integer id) {
-
     }
 
     @Override
@@ -53,7 +52,7 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public Menu[] findByWeight(int weight) {
-      return menuRepository.findByWeight(weight);
+    public Menu[] findByDate(Date date) {
+      return menuRepository.findByDate(date);
     }
 }

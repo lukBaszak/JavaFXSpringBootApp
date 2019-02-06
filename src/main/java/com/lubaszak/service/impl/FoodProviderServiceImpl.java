@@ -50,7 +50,7 @@ public class FoodProviderServiceImpl implements FoodProviderService {
 
         }
 
-        /*for(int i=0; i<brandedProductInfos.length; i++)
+        for(int i=0; i<brandedProductInfos.length; i++)
         {
             Product product = getProductById(brandedProductInfos[i].getNixItemId());
             System.out.println(product.getBrandName());
@@ -58,7 +58,7 @@ public class FoodProviderServiceImpl implements FoodProviderService {
 
         }
 
-*/
+
 
 
         return productList;

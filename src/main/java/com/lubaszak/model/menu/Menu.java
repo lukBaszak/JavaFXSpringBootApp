@@ -17,44 +17,38 @@ public class Menu {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
     @Enumerated(EnumType.STRING)
     @Column(name="meal_time")
-    private Enum<MealTime> mealTime;
-
+    private MealTime mealTime;
     @Column(name = "product_name")
     private String productName;
-
     @Column(name = "product_id")
     private String productId;
-
     private int weight;
-
-
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
 
     public Menu() {
 
     }
 
-    public Menu(Enum<MealTime> mealTime, String productName, String productId, int weight) {
+    public Menu(MealTime mealTime, String productName, String productId, int weight, Date date) {
 
 
         this.mealTime = mealTime;
         this.productName = productName;
         this.productId = productId;
         this.weight = weight;
+        this.date = date;
 
 
     }
 
-
-
-
-
-
+    public Date getDate() { return date; }
+    public void setDate(Date date) { this.date = date; }
     public Enum<MealTime> getMealTime() { return mealTime; }
-    public void setMealTime(Enum<MealTime> mealTime) { this.mealTime = mealTime; }
+    public void setMealTime(MealTime mealTime) { this.mealTime = mealTime; }
     public String getProductName() { return productName; }
     public void setProductName(String productName) { this.productName = productName; }
     public String getProductId() { return productId; }

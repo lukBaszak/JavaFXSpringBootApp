@@ -49,8 +49,7 @@ public class MainController implements Initializable {
 
     @Autowired
     TimeProvider timeProvider;
-    @Autowired
-    FoodMenuService foodMenuService;
+
     @Autowired
     @Lazy
     StageManager stageManager;
@@ -298,7 +297,7 @@ public class MainController implements Initializable {
         try {
 
             foodDailyMenu = foodMenuService.getMenuByDate(getDate());
-            if(foodDailyMenu != null) {
+            if(true) {
                 breakfast = foodDailyMenu.getBreakfast();
 
                 brunch = foodDailyMenu.getBrunch();

@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -62,11 +63,8 @@ public class LoginController {
 	@FXML
 	void loginUser(ActionEvent event) {
 
-		Date date = new Date();
-		System.out.println(date);
-		Menu[] menu =menuService.findByWeight(150);
 
-		menuService.save(new Menu(MealTime.BREAKFAST ,"de", "wef", 120));
+
 
 		if (!emailField.getText().trim().isEmpty() && !passwordField.getText().trim().isEmpty() ) {
 

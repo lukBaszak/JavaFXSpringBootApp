@@ -6,5 +6,5 @@ import java.util.Date;
 
 public interface MenuService extends GenericService<Menu> {
 
-    Menu[] findByWeight(int weight);
+    Menu[] findByDate(Date date);
 }
