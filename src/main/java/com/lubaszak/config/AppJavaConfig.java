@@ -17,12 +17,13 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class AppJavaConfig {
-	
-    @Autowired 
+
+    @Autowired
     SpringFXMLLoader springFXMLLoader;
 
     /**
      * Useful when dumping stack trace to a string for logging.
+     *
      * @return ExceptionWriter contains logging utility methods
      */
     @Bean
@@ -35,11 +36,10 @@ public class AppJavaConfig {
     public ResourceBundle resourceBundle() {
         return ResourceBundle.getBundle("Bundle");
     }
-    
+
     @Bean
     @Lazy(value = true) //Stage only created after Spring context bootstap
     public StageManager stageManager(Stage stage) throws IOException {
         return new StageManager(springFXMLLoader, stage);
     }
-
 }

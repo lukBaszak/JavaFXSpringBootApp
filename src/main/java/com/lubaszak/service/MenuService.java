@@ -1,10 +1,10 @@
 package com.lubaszak.service;
 
-import com.lubaszak.model.menu.Menu;
+import com.lubaszak.model.Menu;
 
 import java.util.Date;
 
 public interface MenuService extends GenericService<Menu> {
 
-    Menu[] findByDate(Date date);
+    Menu[] findByDateAndUser(Date date, String user);
 }

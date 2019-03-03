@@ -1,28 +1,26 @@
 package com.lubaszak.controller;
 
 import com.lubaszak.config.StageManager;
-import com.lubaszak.model.menu.Menu;
-import com.lubaszak.service.FoodMenuService;
+import com.lubaszak.model.ProductResponse;
 import com.lubaszak.service.FoodProviderService;
 import com.lubaszak.service.MenuService;
-import com.lubaszak.service.impl.UserDetailsStoringServiceImpl;
 import com.lubaszak.utils.FxmlView;
 import com.lubaszak.utils.MealTime;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 import com.lubaszak.service.UserService;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
 @Controller
@@ -36,8 +34,7 @@ public class LoginController {
 	private StageManager stageManager;
 
 
-	@Autowired
-	UserDetailsStoringServiceImpl userDetailsStoringService;
+
 
 	@Autowired
 	private FoodProviderService foodService;
@@ -65,7 +62,6 @@ public class LoginController {
 
 
 
-
 		if (!emailField.getText().trim().isEmpty() && !passwordField.getText().trim().isEmpty() ) {
 
 
@@ -76,11 +72,13 @@ public class LoginController {
 			boolean ifValid = userService.authenticate(email, password);
 
 			if(ifValid) {
-
+/*
 				if(userDetailsStoringService.getUserMeasurement()==null) {
 					stageManager.switchScene(FxmlView.USER_DETAIL);
-				}
-				else stageManager.switchScene(FxmlView.MAIN);
+				}*/
+
+				System.setProperty("user.name", emailField.getText());
+				 stageManager.switchScene(FxmlView.MAIN);
 			}
 			else {
 				errorMessage.setText("Wrong login"); //add reference to external file with error messages
@@ -97,7 +95,7 @@ public class LoginController {
 	}
 
 	@FXML
-	void registerUser(ActionEvent event) {
+	void registerUser() {
 		stageManager.switchScene(FxmlView.REGISTER);
 	}
 
@@ -109,6 +107,12 @@ public class LoginController {
 	private String getUsername() {
 		return emailField.getText();
 	}
+
+
+	public void setText(String text) {
+		emailField.setText(text);
+	}
+
 
 
 }

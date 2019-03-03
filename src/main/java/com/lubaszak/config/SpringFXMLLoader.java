@@ -38,13 +38,14 @@ public class SpringFXMLLoader {
         FXMLLoader loader = new FXMLLoader();
         try {
 
+
             loader.load(getClass().getResource(fxmlView.getFxmlFile()).openStream());
             return loader;
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return loader.getController();
     }
 
 

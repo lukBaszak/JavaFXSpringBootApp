@@ -4,6 +4,8 @@ package com.lubaszak.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Column;
+
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
@@ -17,9 +19,9 @@ public class Product {
     @JsonProperty("serving_unit")
     private String servingUnit;
     @JsonProperty("serving_weight_grams")
-    private Integer servingWeightGrams;
+    private double servingWeightGrams;
     @JsonProperty("nf_calories")
-    private Integer calories;
+    private double calories;
     @JsonProperty("nf_total_fat")
     private Integer totalFat;
     @JsonProperty("nf_saturated_fat")
@@ -48,6 +50,8 @@ public class Product {
     private String nixItemName;
     @JsonProperty("nix_item_id")
     private String nixItemId;
+    @JsonProperty("alt_measures")
+    private Measures[] measures;
 
     private String quantity;
 
@@ -66,10 +70,10 @@ public class Product {
     public String getServingUnit() {
         return servingUnit;
     }
-    public Integer getServingWeightGrams() {
+    public double getServingWeightGrams() {
         return servingWeightGrams;
     }
-    public Integer getCalories() {
+    public double getCalories() {
         return calories;
     }
     public Integer getTotalFat() {
@@ -113,5 +117,43 @@ public class Product {
     }
     public String getNixItemId() {
         return nixItemId;
+    }
+
+    public Measures[] getMeasures() {
+        return measures;
+    }
+
+    public void setMeasures(Measures[] measures) {
+        this.measures = measures;
+    }
+
+
+    public static class Measures {
+
+        @JsonProperty("measure")
+        private String measure;
+        @JsonProperty("seq")
+        private int seq;
+        @JsonProperty("qty")
+        private double qty;
+
+        @JsonProperty("serving_weight")
+        private float serving_Weight;
+
+        public double getQty() {
+            return qty;
+        }
+
+        public int getSeq() {
+            return seq;
+        }
+
+        public double getServingWeight() {
+            return serving_Weight;
+        }
+
+        public String getMeasure() {
+            return measure;
+        }
     }
 }

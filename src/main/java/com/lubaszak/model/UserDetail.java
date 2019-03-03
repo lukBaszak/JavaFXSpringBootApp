@@ -24,6 +24,8 @@ public class UserDetail {
 
     public UserDetail() {}
     public Enum getSex() {
+
+
         return sex;
     }
     public void setSex(Sex sex) {

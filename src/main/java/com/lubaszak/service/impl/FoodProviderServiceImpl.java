@@ -28,7 +28,7 @@ public class FoodProviderServiceImpl implements FoodProviderService {
 
 
     @Override
-    public List<Product> getProductsByQuery(@PathVariable String query) {
+    public ProductResponse getProductsByQuery(@PathVariable String query) {
 
         List<Product> productList = new ArrayList<>();
         HttpEntity<?> httpEntity = httpEntityProvider.getHttpEntity();
@@ -41,7 +41,7 @@ public class FoodProviderServiceImpl implements FoodProviderService {
         ProductResponse.BrandedProductInfo[] brandedProductInfos = products.getBranded();
         ProductResponse.CommonProductInfo[] commonProductInfos = products.getCommon();
 
-
+/*
         for(int i=0; i<commonProductInfos.length ; i++)
         {
             Product product = getProductByName(commonProductInfos[i].getFoodName());
@@ -56,12 +56,12 @@ public class FoodProviderServiceImpl implements FoodProviderService {
             System.out.println(product.getBrandName());
             productList.add(product);
 
-        }
+        }*/
 
 
 
 
-        return productList;
+        return products;
     }
 
 
@@ -78,9 +78,9 @@ public class FoodProviderServiceImpl implements FoodProviderService {
 
         HttpHeaders headers = httpEntityProvider.getHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        MultiValueMap<String, String> map= new LinkedMultiValueMap<String, String>();
+        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
         map.add("query", itemName);
-        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
         ResponseEntity<ProductCommonResponse> response = restConfig.createRestTemplate().postForEntity("https://trackapi.nutritionix.com/v2/natural/nutrients/", request , ProductCommonResponse.class );
 
 

@@ -1,7 +1,7 @@
 package com.lubaszak.controller;
 
 import com.lubaszak.model.UserDetail;
-import com.lubaszak.service.UserDetailsStoringService;
+
 import com.lubaszak.utils.Activity;
 import com.lubaszak.utils.Sex;
 import javafx.event.ActionEvent;
@@ -22,9 +22,7 @@ public class UserDetailsController implements Initializable {
     private Sex sex;
     private Activity activity;
 
-    @Autowired
-    @Qualifier("userDetailsStoringServiceImpl")
-    UserDetailsStoringService userDetailsStoringService;
+
 
     @FXML
     private RadioButton maleButton;
@@ -67,7 +65,7 @@ public class UserDetailsController implements Initializable {
         else {
             user = new UserDetail(getSex(), getBirthDate(), getHeight(),getWeight(), getActivityLevel());
 
-            userDetailsStoringService.saveUserMeasurement(user);
+
 
 
 

@@ -2,19 +2,19 @@ package com.lubaszak.controller;
 
 import com.lubaszak.config.SpringFXMLLoader;
 import com.lubaszak.config.StageManager;
-import com.lubaszak.model.FoodDailyMenu;
 import com.lubaszak.model.MacroProperties;
 import com.lubaszak.model.Product;
-import com.lubaszak.service.FoodMenuService;
+import com.lubaszak.model.Menu;
+import com.lubaszak.service.FoodProviderService;
+import com.lubaszak.service.MenuService;
 import com.lubaszak.utils.FxmlView;
 import com.lubaszak.utils.MealTime;
-import com.lubaszak.utils.TimeProvider;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ProgressBar;
@@ -22,15 +22,12 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -47,8 +44,7 @@ public class MainController implements Initializable {
     VBox mainBox;
 
 
-    @Autowired
-    TimeProvider timeProvider;
+
 
     @Autowired
     @Lazy
@@ -87,16 +83,46 @@ public class MainController implements Initializable {
     @FXML
     private ProgressBar carbProgressBar;
 
+    @Autowired
+    MenuService menuService;
+
+    @Autowired
+    FoodProviderService foodProviderService;
+
     @FXML
     private ProgressBar caloriesProgressBar;
+
+    static MealTime mealTime;
+
+    @FXML
+    void addToBreakfast(ActionEvent event) {
+        mealTime = MealTime.BREAKFAST;
+        stageManager.openNewStage(FxmlView.FOOD_SEARCH);
+    }
+
+    @FXML
+    void addToBrunch(ActionEvent event) {
+        mealTime = MealTime.BRUNCH;
+        stageManager.openNewStage(FxmlView.FOOD_SEARCH);
+    }
+
+    @FXML
+    void addToDinner(ActionEvent event) {
+         mealTime = MealTime.DINNER;
+        stageManager.openNewStage(FxmlView.FOOD_SEARCH);
+    }
+
+    @FXML
+    void addToLunch(ActionEvent event) {
+        mealTime = MealTime.LUNCH;
+        stageManager.openNewStage(FxmlView.FOOD_SEARCH);
+    }
+
     @FXML
     void loadMenuData(ActionEvent event) {
-        resetMenu();
-
-       loadMenu();
-
 
     }
+
     private List<Product> breakfast;
     private List<Product> brunch;
     private List<Product> lunch;
@@ -123,20 +149,13 @@ public class MainController implements Initializable {
    final MacroProperties macroProperties = new MacroProperties();
     LocalDate localDate;
     public void initialize(URL location, ResourceBundle resources) {
+        testText.setText(System.getProperty("user.name"));
 
         localDate = LocalDate.now();
         dataPicker.setValue(localDate);
 
 
-        FXMLLoader  controller = springFXMLLoader.getController(FxmlView.FOOD_SEARCH);
-        FoodSearchController controller1 = controller.getController();
 
-
-
-
-
-
-        stageManager.openNewStage(FxmlView.FOOD_SEARCH);
 
         macroProperties.setCalorie(0);
         macroProperties.setFat(0);
@@ -144,6 +163,8 @@ public class MainController implements Initializable {
         macroProperties.setCarb(0);
 
         macroProperties.proteinProperty().addListener(new ChangeListener<Number>() {
+         //ZROBIC LICZNIK KALORII
+
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 proteinProgressBar.setProgress(newValue.doubleValue()/100);
@@ -274,7 +295,7 @@ public class MainController implements Initializable {
 
 
     private void loadMenu() throws NullPointerException  {
-        FoodDailyMenu foodDailyMenu;
+        Menu[] menu;
         breakfastCalorie=breakfastProt=breakfastFat=breakfastCarb=brunchProt=brunchFat=brunchCarb=brunchCalorie=lunchProt=lunchCarb=lunchFat=lunchCalorie=dinnerProt=dinnerFat=dinnerCarb=dinnerCalorie=0;
 
         dinnerProtText.setText("0");
@@ -294,57 +315,40 @@ public class MainController implements Initializable {
         //breakfastCalorieText.setText(String.valueOf(breakfastProt));
         breakfastCarbText.setText(String.valueOf(breakfastCarb));
 
-        try {
 
-            foodDailyMenu = foodMenuService.getMenuByDate(getDate());
-            if(true) {
-                breakfast = foodDailyMenu.getBreakfast();
 
-                brunch = foodDailyMenu.getBrunch();
-                lunch = foodDailyMenu.getLunch();
-                dinner = foodDailyMenu.getDinner();
-            }
-        } catch (FileNotFoundException e) {
+            menu = menuService.findByDateAndUser(getDate(), System.getProperty("user.name"));
+            if(menu!=null) {
+                for(int i=0;i<menu.length;i++) {
+                    MealTime mealTime = (MealTime) menu[i].getMealTime();
+                    Product product = foodProviderService.getProductByName(menu[i].getProductName());
+                    switch (mealTime) {
+                        case BREAKFAST:
+                            breakfastFat += product.getTotalFat() ;
+                            breakfastCalorie += product.getCalories();
+                            breakfastCarb += product.getTotalCarbohydrate();
+                            breakfastProt += product.getProtein();
+                        case LUNCH:
+                            lunchFat += product.getTotalFat();
+                            lunchCalorie += product.getCalories();
+                            lunchCarb += product.getTotalCarbohydrate();
+                            lunchProt += product.getProtein();
 
-            e.printStackTrace();
-        }
+                        case BRUNCH:
+                            brunchFat += product.getTotalFat();
+                            brunchCalorie += product.getCalories();
+                            brunchCarb += product.getTotalCarbohydrate();
+                            brunchProt += product.getProtein();
+                        case DINNER:
+                            brunchFat += product.getTotalFat();
+                            brunchCalorie += product.getCalories();
+                            brunchCarb += product.getTotalCarbohydrate();
+                            brunchProt += product.getProtein();
+                    }
 
-    if(breakfast !=null) {
-        for (Product product : breakfast) {
+                }
 
-            breakfastFat += product.getTotalFat() ;
-            breakfastCalorie += product.getCalories();
-            breakfastCarb += product.getTotalCarbohydrate();
-            breakfastProt += product.getProtein();
-        }
-    }
-
-    if(brunch!=null) {
-        for (Product product : brunch) {
-            brunchFat += product.getTotalFat();
-            brunchCalorie += product.getCalories();
-            brunchCarb += product.getTotalCarbohydrate();
-            brunchProt += product.getProtein();
-        }
-    }
-
-    if(lunch!=null) {
-        for (Product product : lunch) {
-            lunchFat += product.getTotalFat();
-            lunchCalorie += product.getCalories();
-            lunchCarb += product.getTotalCarbohydrate();
-            lunchProt += product.getProtein();
-        }
-    }
-
-    if(dinner!=null) {
-        for (Product product : dinner) {
-            dinnerFat += product.getTotalFat();
-            dinnerCalorie += product.getCalories();
-            dinnerCarb += product.getTotalCarbohydrate();
-            dinnerProt += product.getProtein();
-        }
-    }
+                }
         macroProperties.setCarb(breakfastCarb+lunchCarb+brunchCarb+dinnerCarb);
         macroProperties.setProtein(breakfastProt+brunchProt+lunchProt+dinnerCarb);
         macroProperties.setFat(breakfastFat+brunchFat+lunchFat+dinnerFat);
@@ -373,25 +377,17 @@ public class MainController implements Initializable {
             GridPane gridPane = new GridPane();
             gridPane.setPrefSize(100,50);
             gridPane.add(new Text(product.getFoodName().toString()),0,0);
-            gridPane.add(new Text("Calories:" + product.getCalories().toString()), 0,1);
+            gridPane.add(new Text("Calories:" + product.getCalories()), 0,1);
             gridPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    System.out.println(product.getFoodName());
-                    getNutritionInfo(product.getFoodName());
+
+
                 }
             });
             gridPane.setId("product-pane");
             return gridPane;
         }
-
-    private void getNutritionInfo(String foodName) {
-       FoodInfoController foodInfoController = springFXMLLoader.getController(FxmlView.FOOD_INFO).getController();
-       foodInfoController.setFoodSearchId("hard salami");
-       System.out.println("Get" + foodInfoController.getFoodId());
-
-       stageManager.openNewStage(FxmlView.FOOD_INFO);
-    }
 
     public void resetMenu() {
 
@@ -399,8 +395,6 @@ public class MainController implements Initializable {
             macroProperties.setFat(0);
             macroProperties.setProtein(0);
             macroProperties.setCarb(0);
-
-
 
         }
 
@@ -410,11 +404,6 @@ public class MainController implements Initializable {
 
         return date;
         }
-
-
-
-
-
 
 
     }

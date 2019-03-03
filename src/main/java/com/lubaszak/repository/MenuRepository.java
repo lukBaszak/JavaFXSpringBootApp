@@ -1,11 +1,12 @@
-package com.lubaszak.repository.menu;
+package com.lubaszak.repository;
 
-import com.lubaszak.model.menu.Menu;
+import com.lubaszak.model.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Date;
 
 public interface MenuRepository extends JpaRepository<Menu, Long> {
-    Menu[] findByDate(Date date);
+    Menu[] findAllByDateAndAndUser(Date date, String user);
+
 
 }

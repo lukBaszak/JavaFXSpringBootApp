@@ -18,7 +18,7 @@
                   <AnchorPane fx:id="dinnerPane" prefHeight="63.0" prefWidth="294.0" style="-fx-border-color: grey;">
                      <children>
                         <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dinner" wrappingWidth="40.56444896757603" />
-                        <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
+                        <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" onAction="#addToDinner" text="Button" />
                         <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein:" />
                         <Text layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
                         <Text layoutX="153.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbs:" />
@@ -33,7 +33,7 @@
             <AnchorPane fx:id="lunchPane" layoutX="191.0" layoutY="144.0" prefHeight="63.0" prefWidth="294.0" style="-fx-border-color: grey;">
                <children>
                   <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lunch" wrappingWidth="40.56444896757603" />
-                  <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" onAction="#addToLunch" text="Button" />
                   <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein:" />
                   <Text layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
                   <Text layoutX="153.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbs:" />
@@ -45,7 +45,7 @@
             <AnchorPane fx:id="breakfastPane" layoutX="199.0" layoutY="256.0" prefHeight="63.0" prefWidth="294.0" style="-fx-border-color: grey;">
                <children>
                   <Text layoutX="14.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Breakfast" wrappingWidth="52.00000196695328" />
-                  <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" onAction="#addToBreakfast" text="Button" />
                   <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein:" />
                   <Text layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
                   <Text layoutX="153.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbs:" />
@@ -58,7 +58,7 @@
             <AnchorPane fx:id="brunchPane" layoutX="185.0" layoutY="379.0" prefHeight="63.0" prefWidth="294.0" style="-fx-border-color: grey;">
                <children>
                   <Text layoutX="15.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brunch" wrappingWidth="78.13671875" />
-                  <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" text="Button" />
+                  <Button layoutX="228.0" layoutY="19.0" mnemonicParsing="false" onAction="#addToBrunch" text="Button" />
                   <Text layoutX="14.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Protein:" />
                   <Text layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat:" />
                   <Text layoutX="153.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carbs:" />

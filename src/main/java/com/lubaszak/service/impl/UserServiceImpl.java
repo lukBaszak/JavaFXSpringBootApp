@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lubaszak.model.user.User;
-import com.lubaszak.repository.user.UserRepository;
+import com.lubaszak.repository.UserRepository;
 import com.lubaszak.service.UserService;
 
 @Service
@@ -54,8 +54,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean authenticate(String password, String email) {
+	public boolean authenticate(String email, String password) {
+		
+
 		User checkedUser = userRepository.findByEmail(email);
+
 
 		if (checkedUser != null) {
 			if (checkedUser.getPassword().equals(password)) {

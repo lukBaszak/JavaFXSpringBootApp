@@ -50,7 +50,17 @@ public class ProductResponse {
          Integer brandType;
         @JsonProperty("nix_item_id")
          String nixItemId;
+        @JsonProperty("photo")
+        Photo photo;
 
+
+        public Photo getPhoto() {
+            return photo;
+        }
+
+        public void setPhoto(Photo photo) {
+            this.photo = photo;
+        }
 
         public String getFoodName() {
             return foodName;
@@ -79,6 +89,19 @@ public class ProductResponse {
         public String getNixItemId() {
             return nixItemId;
         }
+
+        private static class Photo {
+            @JsonProperty("thumb")
+            String thumb;
+
+
+            public String getThumb() {
+                return thumb;
+            }
+            public void setThumb(String thumb) {
+                this.thumb = thumb;
+            }
+        }
     }
 
      public static class CommonProductInfo {
@@ -86,11 +109,29 @@ public class ProductResponse {
         @JsonProperty("food_name")
         private String foodName;
 
+        @JsonProperty("photo")
+        private Photo photo;
+
         public String getFoodName() {
             return foodName;
         }
         public void setFoodName(String foodName) {
             this.foodName = foodName;
         }
+         public Photo getPhoto() {return photo; }
+         public void setPhoto(Photo photo) { this.photo = photo; }
+
+         public static class Photo {
+             @JsonProperty("thumb")
+             String thumb;
+
+
+             public String getThumb() {
+                 return thumb;
+             }
+             public void setThumb(String thumb) {
+                 this.thumb = thumb;
+             }
+         }
     }
 }

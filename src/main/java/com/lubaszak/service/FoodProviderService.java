@@ -1,12 +1,11 @@
 package com.lubaszak.service;
 
 import com.lubaszak.model.Product;
-
-import java.util.List;
+import com.lubaszak.model.ProductResponse;
 
 public interface FoodProviderService {
 
-     List<Product> getProductsByQuery(String query);
+     ProductResponse getProductsByQuery(String query);
 
      Product getProductById(String itemId);
 

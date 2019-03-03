@@ -42,7 +42,8 @@ public class HttpEntityProvider {
                 Stream.of(
 
                         new AbstractMap.SimpleEntry<>("x-app-id", apiId),
-                        new AbstractMap.SimpleEntry<>("x-app-key", apiKey)
+                        new AbstractMap.SimpleEntry<>("x-app-key", apiKey),
+                        new AbstractMap.SimpleEntry<>("x-remote-user-id", "0")
                 )
                         .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
 

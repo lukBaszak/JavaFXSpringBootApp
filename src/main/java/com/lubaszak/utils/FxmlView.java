@@ -15,6 +15,11 @@ public enum FxmlView {
             return "/fxml/UserView.fxml";
         }
 
+        @Override
+        public String getCssStyle() {
+            return null;
+        }
+
     }, 
     LOGIN {
         @Override
@@ -25,6 +30,11 @@ public enum FxmlView {
         @Override
 		public String getFxmlFile() {
             return "/fxml/LoginView.fxml";
+        }
+
+        @Override
+        public String getCssStyle() {
+            return null;
         }
 
 
@@ -40,6 +50,11 @@ public enum FxmlView {
             return "/fxml/RegisterView.fxml";
         }
 
+        @Override
+        public String getCssStyle() {
+            return null;
+        }
+
 
     },
 
@@ -51,6 +66,11 @@ public enum FxmlView {
         @Override
         public String getFxmlFile() {
             return "/fxml/MainView.fxml";
+        }
+
+        @Override
+        public String getCssStyle() {
+            return null;
         }
 
 
@@ -67,6 +87,11 @@ public enum FxmlView {
             return "/fxml/FoodSearchView.fxml";
         }
 
+        @Override
+        public String getCssStyle() {
+            return null;
+        }
+
 
     },
 
@@ -81,20 +106,38 @@ public enum FxmlView {
         public String getFxmlFile() {
             return "/fxml/FoodInfoView.fxml";
         }
-    }
+
+        @Override
+        public String getCssStyle() {
+            return null;
+        }
+    },
+
+    QUANTITY {
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("quantity.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/fxml/QuantityView.fxml";
+        }
+
+        @Override
+        public String getCssStyle() {
+            return null;
+        }
+    };
 
 
-
-
-
-    ;
-    
     public abstract String getTitle();
     public abstract String getFxmlFile();
-
+    public abstract String getCssStyle();
     
     String getStringFromResourceBundle(String key){
         return ResourceBundle.getBundle("Bundle").getString(key);
     }
+
 
 }

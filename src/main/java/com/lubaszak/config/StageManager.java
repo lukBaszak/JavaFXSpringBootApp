@@ -7,6 +7,7 @@ import java.util.Objects;
 import com.lubaszak.controller.FoodSearchController;
 import com.lubaszak.controller.LoginController;
 import javafx.fxml.FXMLLoader;
+import javafx.stage.Modality;
 import org.slf4j.Logger;
 
 import com.lubaszak.utils.FxmlView;
@@ -44,6 +45,7 @@ public class StageManager {
 
         Stage stage = new Stage();
 
+        stage.initModality(Modality.APPLICATION_MODAL);
         show(viewRootNodeHierarchy, view.getTitle(), stage);
     }
 
@@ -72,6 +74,7 @@ public class StageManager {
             scene = new Scene(rootnode);
         }
         scene.setRoot(rootnode);
+
         return scene;
     }
 
