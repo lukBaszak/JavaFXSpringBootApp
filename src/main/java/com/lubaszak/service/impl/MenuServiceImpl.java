@@ -1,7 +1,7 @@
 package com.lubaszak.service.impl;
 
-import com.lubaszak.model.menu.Menu;
-import com.lubaszak.repository.menu.MenuRepository;
+import com.lubaszak.model.Menu;
+import com.lubaszak.repository.MenuRepository;
 import com.lubaszak.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +21,8 @@ public class MenuServiceImpl implements MenuService {
     public Menu save(Menu entity) {
         return menuRepository.save(entity);
     }
+
+
 
     @Override
     public Menu update(Menu entity) {
@@ -52,7 +54,7 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public Menu[] findByDate(Date date) {
-      return menuRepository.findByDate(date);
+    public Menu[] findByDateAndUser(Date date, String user) {
+      return menuRepository.findAllByDateAndAndUser(date, user);
     }
 }
