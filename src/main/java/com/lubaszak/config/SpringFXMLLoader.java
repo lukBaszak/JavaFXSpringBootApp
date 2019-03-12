@@ -1,5 +1,6 @@
 package com.lubaszak.config;
 
+
 import com.lubaszak.utils.FxmlView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,19 +35,6 @@ public class SpringFXMLLoader {
         return loader;
     }
 
-    public FXMLLoader getController(FxmlView fxmlView) {
-        FXMLLoader loader = new FXMLLoader();
-        try {
-
-
-            loader.load(getClass().getResource(fxmlView.getFxmlFile()).openStream());
-            return loader;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return loader.getController();
-    }
 
 
 

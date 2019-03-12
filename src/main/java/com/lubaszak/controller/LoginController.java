@@ -1,11 +1,14 @@
 package com.lubaszak.controller;
 
 import com.lubaszak.config.StageManager;
+import com.lubaszak.model.Menu;
 import com.lubaszak.model.ProductResponse;
+import com.lubaszak.model.user.User;
 import com.lubaszak.service.FoodProviderService;
 import com.lubaszak.service.MenuService;
 import com.lubaszak.utils.FxmlView;
 import com.lubaszak.utils.MealTime;
+import com.lubaszak.utils.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +17,7 @@ import javafx.scene.control.Button;
 import com.lubaszak.service.UserService;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Lazy;
@@ -26,8 +30,9 @@ import java.util.ResourceBundle;
 @Controller
 public class LoginController {
 
-	private String email;
-	private String password;
+
+	private static String email;
+	private static String password;
 
 	@Autowired
 	@Lazy
@@ -62,6 +67,7 @@ public class LoginController {
 
 
 
+
 		if (!emailField.getText().trim().isEmpty() && !passwordField.getText().trim().isEmpty() ) {
 
 
@@ -76,16 +82,16 @@ public class LoginController {
 				if(userDetailsStoringService.getUserMeasurement()==null) {
 					stageManager.switchScene(FxmlView.USER_DETAIL);
 				}*/
+				User user = userService.findByEmail(email);
+				UserSession.setSession(user.getId());
 
-				System.setProperty("user.name", emailField.getText());
-				 stageManager.switchScene(FxmlView.MAIN);
+				stageManager.switchScene(FxmlView.MAIN);
 			}
 			else {
 				errorMessage.setText("Wrong login"); //add reference to external file with error messages
 				errorMessage.setVisible(true);
 			}
 		}
-
 		else {
 
 			errorMessage.setText("please input correct email and password");
@@ -98,21 +104,5 @@ public class LoginController {
 	void registerUser() {
 		stageManager.switchScene(FxmlView.REGISTER);
 	}
-
-
-	private String getPassword() {
-		return passwordField.getText();
-	}
-
-	private String getUsername() {
-		return emailField.getText();
-	}
-
-
-	public void setText(String text) {
-		emailField.setText(text);
-	}
-
-
 
 }

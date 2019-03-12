@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Optional;
 
 
 @Entity(name = "menu")
@@ -15,17 +16,18 @@ public class Menu {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
-    private String user;
+    @Column(name = "userID")
+    private int userID;
+
     @Enumerated(EnumType.STRING)
     @Column(name="meal_time")
     private MealTime mealTime;
     @Column(name = "product_name")
     private String productName;
-    @Column(name = "product_id")
-    private String productId;
-    private int weight;
+
+
+    private double weight;
     @Temporal(TemporalType.DATE)
     private Date date;
 
@@ -34,13 +36,12 @@ public class Menu {
 
     }
 
-    public Menu(MealTime mealTime, String productName, String productId, int weight, Date date, String user) {
+    public Menu(MealTime mealTime, String productName, double weight, Date date, int user) {
 
 
-        this.user = user;
+        this.userID = user;
         this.mealTime = mealTime;
         this.productName = productName;
-        this.productId = productId;
         this.weight = weight;
         this.date = date;
 
@@ -48,22 +49,20 @@ public class Menu {
     }
 
 
-    public String getUser() {
-        return user;
+    public int getUser() {
+        return userID;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser(int user) {
+        this.userID = user;
     }
 
     public Date getDate() { return date; }
     public void setDate(Date date) { this.date = date; }
-    public Enum<MealTime> getMealTime() { return mealTime; }
+    public MealTime getMealTime() { return mealTime; }
     public void setMealTime(MealTime mealTime) { this.mealTime = mealTime; }
     public String getProductName() { return productName; }
     public void setProductName(String productName) { this.productName = productName; }
-    public String getProductId() { return productId; }
-    public void setProductId(String productId) { this.productId = productId; }
-    public int getWeight() { return weight; }
+    public double getWeight() { return weight; }
     public void setWeight(int weight) { this.weight = weight; }
 }

@@ -19,6 +19,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public Menu save(Menu entity) {
+        System.out.println(entity);
         return menuRepository.save(entity);
     }
 
@@ -54,7 +55,7 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public Menu[] findByDateAndUser(Date date, String user) {
-      return menuRepository.findAllByDateAndAndUser(date, user);
+    public Menu[] findByDateAndUserID(Date date, int userID) {
+      return menuRepository.findAllByDateAndUserID(date, userID);
     }
 }

@@ -52,6 +52,10 @@ public class Product {
     private String nixItemId;
     @JsonProperty("alt_measures")
     private Measures[] measures;
+    @JsonProperty("photo")
+    private Photo photo;
+
+
 
     private String quantity;
 
@@ -122,9 +126,19 @@ public class Product {
     public Measures[] getMeasures() {
         return measures;
     }
+    public Photo getPhoto() {return photo;}
 
-    public void setMeasures(Measures[] measures) {
-        this.measures = measures;
+    public static class Photo {
+        @JsonProperty("thumb")
+        String thumb;
+
+
+        public String getThumb() {
+            return thumb;
+        }
+        public void setThumb(String thumb) {
+            this.thumb = thumb;
+        }
     }
 
 

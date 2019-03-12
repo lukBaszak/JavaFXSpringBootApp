@@ -6,5 +6,8 @@ import java.util.Date;
 
 public interface MenuService extends GenericService<Menu> {
 
-    Menu[] findByDateAndUser(Date date, String user);
+    Menu[] findByDateAndUserID(Date date, int userID);
+
+
+
 }
