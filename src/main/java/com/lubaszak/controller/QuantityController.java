@@ -1,11 +1,13 @@
 package com.lubaszak.controller;
 
 
+import com.lubaszak.config.StageManager;
 import com.lubaszak.controller.containers.QuantityBox;
 import com.lubaszak.model.Menu;
 import com.lubaszak.model.Product;
 import com.lubaszak.service.FoodProviderService;
 import com.lubaszak.service.MenuService;
+import com.lubaszak.utils.FxmlView;
 import com.lubaszak.utils.UserSession;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 
 import java.net.URL;
@@ -28,6 +31,10 @@ public class QuantityController implements Initializable {
 
     @Autowired
     FoodProviderService foodService;
+
+    @Autowired
+    @Lazy
+    StageManager stageManager;
 
     @Autowired
     MenuService menuService;
@@ -47,24 +54,23 @@ public class QuantityController implements Initializable {
 
 
         for(int i =0; i<product.getMeasures().length; i++) {
-            ConfigurableApplicationContext context = new AnnotationConfigApplicationContext("com.lubaszak.controller.containers");
-            QuantityBox quantityBox = context.getBean(QuantityBox.class);
+
+            QuantityBox quantityBox = new QuantityBox(product,product.getMeasures()[i]);
             measures2 = product.getMeasures()[i];
 
             Product.Measures measures = product.getMeasures()[i];
-            quantityBox.completeBox();
+
             quantityBox.getAcceptButton().setOnAction(event -> {
                 try {
-                    menuService.save(new Menu(MainController.mealTime, product.getFoodName(), measures.getServingWeight() * quantityBox.getMultiplier(), MainController.chosenDate, UserSession.getSession().getId()));
-                    Stage stage = (Stage) quantityPane.getScene().getWindow();
-                    stage.close();
+                    menuService.save(new Menu(MainController.mealTimeChosen, product.getFoodName(), measures.getServingWeight() * quantityBox.getMultiplier(), MainController.chosenDate, UserSession.getSession().getId()));
+                    stageManager.switchScene(FxmlView.MAIN);
                 }
                 catch(NumberFormatException e) {
                     System.out.println("Provide quantity of product");
                 }
             });
             vBox.getChildren().add(quantityBox);
-            context.close();
+
 
         }
         quantityPane.setContent(vBox);

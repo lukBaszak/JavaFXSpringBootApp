@@ -71,12 +71,11 @@ public class FoodSearchController implements Initializable {
 
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (searchField.getText().length() > 4) {
-                long startTime = System.currentTimeMillis();
+
                 loadList();
-                long finishTime = System.currentTimeMillis();
-                System.out.println("That took: " + (finishTime - startTime) + " ms");
-            }
-        });
+
+        }
+    });
     }
 
 
@@ -88,15 +87,16 @@ public class FoodSearchController implements Initializable {
         VBox vBox = new VBox();
         for (int i = 0; products.getCommon().length > i; i++) {
 
-            ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext("com.lubaszak.controller.containers");
-            ResultBox resultBox = ctx.getBean(ResultBox.class);
+
+            ResultBox resultBox = new ResultBox();
             product = products.getCommon()[i];
             resultBox.setContent();
             String food = products.getCommon()[i].getFoodName();
             resultBox.setOnMouseClicked(event -> {
 
+
                 productId = food;
-                stageManager.openNewStage(FxmlView.QUANTITY);
+                stageManager.switchScene(FxmlView.QUANTITY);
             });
 
             vBox.getChildren().add(resultBox);

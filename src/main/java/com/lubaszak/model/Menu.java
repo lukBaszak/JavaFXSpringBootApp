@@ -57,6 +57,7 @@ public class Menu {
         this.userID = user;
     }
 
+    public int getId() {return id;}
     public Date getDate() { return date; }
     public void setDate(Date date) { this.date = date; }
     public MealTime getMealTime() { return mealTime; }

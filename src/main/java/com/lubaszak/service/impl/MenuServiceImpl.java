@@ -58,4 +58,6 @@ public class MenuServiceImpl implements MenuService {
     public Menu[] findByDateAndUserID(Date date, int userID) {
       return menuRepository.findAllByDateAndUserID(date, userID);
     }
+
+
 }

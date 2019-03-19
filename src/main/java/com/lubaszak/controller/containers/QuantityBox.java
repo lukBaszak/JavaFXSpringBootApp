@@ -30,7 +30,7 @@ import javax.annotation.PostConstruct;
 import javax.persistence.PostLoad;
 
 
-@Component
+
 public class QuantityBox extends AnchorPane {
 
     @FXML
@@ -50,7 +50,7 @@ public class QuantityBox extends AnchorPane {
     private int multiplier = 1;
 
 
-    public QuantityBox() {
+    public QuantityBox(Product product, Product.Measures measures) {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "/fxml/QuantityBox.fxml"));
@@ -59,18 +59,15 @@ public class QuantityBox extends AnchorPane {
 
         try {
             fxmlLoader.load();
+            completeBox(product, measures);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
     }
 
 
-    @PostLoad
-    public void completeBox() {
 
-        Product.Measures measures = QuantityController.measures2;
-        Product product = QuantityController.product;
-
+    public void completeBox(Product product, Product.Measures measures) {
 
 
         quantityMeasure.setText(measures.getMeasure());

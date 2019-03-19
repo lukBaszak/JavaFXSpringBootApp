@@ -2,6 +2,7 @@ package com.lubaszak.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lubaszak.utils.Activity;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductResponse {
@@ -124,6 +125,7 @@ public class ProductResponse {
          public static class Photo {
              @JsonProperty("thumb")
              String thumb;
+
 
 
              public String getThumb() {

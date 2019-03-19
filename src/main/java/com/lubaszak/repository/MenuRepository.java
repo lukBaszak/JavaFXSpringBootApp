@@ -11,4 +11,5 @@ public interface MenuRepository extends JpaRepository<Menu, Long> {
     Menu[] findAllByDateAndUserID(Date date, int userId);
 
 
+
 }

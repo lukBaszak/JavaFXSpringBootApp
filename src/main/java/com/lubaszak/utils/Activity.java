@@ -16,7 +16,7 @@ public enum Activity {
     MEDIUM,
     HIGH;
 
-    private static Map<String, Activity> namesMap = new HashMap<>();
+    public static Map<String, Activity> namesMap = new HashMap<>();
 
     static {
         namesMap.put("veryLow", VERY_LOW);
@@ -26,18 +26,6 @@ public enum Activity {
 
     }
 
-    @JsonCreator
-    public static Activity forValue(String value) {
-        return namesMap.get(StringUtils.lowerCase(value));
-    }
-
-    @JsonValue
-    public String toValue() {
-        for(Map.Entry<String, Activity> entry: namesMap.entrySet()) {
-            return entry.getKey();
-        }
-        return null;
-    }
 
 
 }
