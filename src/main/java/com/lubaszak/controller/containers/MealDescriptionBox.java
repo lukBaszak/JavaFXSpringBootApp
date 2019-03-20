@@ -72,14 +72,22 @@ public class MealDescriptionBox extends AnchorPane {
             for (int i = 0; i < productsList.getChildren().size(); i++) {
                 MenuBox menuBox = (MenuBox) productsList.getChildren().get(i);
                 calories += menuBox.getCalorie();
+                protein += menuBox.getProtein();
+                carbs += menuBox.getCarbs();
+                fat+= menuBox.getFat();
                 System.out.println(calories);
 
             }
         }
         MainController.calories += calories;
+        MainController.protein += protein;
+        MainController.carb += carbs;
+        MainController.fat += fat;
 
             calorieText.setText(String.format("%.2f", calories));
-
+            proteinText.setText(String.format("%.2f", protein));
+            fatText.setText(String.format("%.2f", fat));
+            carbText.setText(String.format("%.2f", carbs));
 
             mealNameText.setText(mealTime.name());
 

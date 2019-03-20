@@ -4,11 +4,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<fx:root type="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" style="-fx-border-style: solid solid none solid; -fx-border-color: red;" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
 <children>
-   <Text fx:id="foodNameText" layoutX="20.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Text fx:id="calorieText" layoutX="96.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-   <Button fx:id="deleteButton" layoutX="232.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="42.0" text="Button" />
+   <Text fx:id="foodNameText" layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Text fx:id="calorieText" layoutX="36.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   <Button fx:id="deleteButton" layoutX="232.0" layoutY="18.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="54.0" text="Delete" />
+      <Text fx:id="proteinText" layoutX="86.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="carbText" layoutX="127.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="fatText" layoutX="170.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
 </children>
 </fx:root>

@@ -93,6 +93,9 @@ public class MainController implements Initializable {
     private List<Menu> dinnerList;
 
     public static double calories =0;
+    public static double fat = 0;
+    public static double carb = 0;
+    public static double protein = 0;
 
     MealDescriptionBox breakfastDescription;
     MealDescriptionBox brunchDescription;
@@ -105,8 +108,8 @@ public class MainController implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
 
-        macroProperties.setCalorie(calories);
-        macroProperties.calorieProperty().addListener((observable, oldValue, newValue) -> caloriesProgressBar.setProgress(newValue.doubleValue()/1000));
+
+
 
         breakfastBox = new VBox();
         brunchBox = new VBox();
@@ -114,56 +117,95 @@ public class MainController implements Initializable {
         dinnerBox = new VBox();
         mainBox = new VBox();
 
-        breakfastList = new ArrayList<>();
+
+        try {
+            dataPicker.setValue(chosenDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        }catch(Exception e) {
+            localDate = LocalDate.now();
+            dataPicker.setValue(localDate);
+            chosenDate = getDate(localDate);
+        }
 
 
 
-        localDate = LocalDate.now();
-        dataPicker.setValue(localDate);
-        chosenDate = getDate(localDate);
         Menu[] menu = menuService.findByDateAndUserID(chosenDate, UserSession.getSession().getId());
-        setLists(menu);
+        scrollMenuPane.setContent(setLists(menu));
+
+        dataPicker.valueProperty().addListener((ov, oldValue, newValue) -> {
+           if(oldValue!=newValue) {
+               calories = 0;
+               chosenDate = getDate(newValue);
+               scrollMenuPane.setContent(setLists(menuService.findByDateAndUserID(chosenDate, UserSession.getSession().getId())));
+           }
+        });
+
+        carbProgressBar.setProgress(carb/1000);
+        macroProperties.setCarb(carb);
+        macroProperties.carbProperty().addListener((observable, oldValue, newValue) -> carbProgressBar.setProgress(newValue.doubleValue()/1000));
+
+        fatProgressBar.setProgress(fat/1000);
+        macroProperties.setFat(fat);
+        macroProperties.fatProperty().addListener((observable, oldValue, newValue) -> fatProgressBar.setProgress(newValue.doubleValue()/1000));
+
+        proteinProgressBar.setProgress(protein/1000);
+        macroProperties.setProtein(protein);
+        macroProperties.proteinProperty().addListener((observable, oldValue, newValue) -> proteinProgressBar.setProgress(newValue.doubleValue()/1000));
+
+        caloriesProgressBar.setProgress(calories/1000);
+        macroProperties.setCalorie(calories);
+        macroProperties.calorieProperty().addListener((observable, oldValue, newValue) -> caloriesProgressBar.setProgress(newValue.doubleValue()/1000));
+
     }
 
-       private void setLists(Menu[] list) {
+       private VBox setLists(Menu[] list) {
+           List<Menu> breakfastList = new ArrayList<>();
+           List<Menu> brunchList = new ArrayList<>();
+           List<Menu> lunchList = new ArrayList<>();
+           List<Menu>  dinnerList = new ArrayList<>();
+
             for(Menu menu:list) {
 
                 switch(menu.getMealTime()) {
                     case breakfast:
-
                         breakfastList.add(menu);
                         break;
                     case brunch:
-                        breakfastList.add(menu);
+                        brunchList.add(menu);
                         break;
                     case lunch:
-                        breakfastList.add(menu);
+                        lunchList.add(menu);
                         break;
                     case dinner:
-                        breakfastList.add(menu);
+                        dinnerList.add(menu);
                         break;
                 }
             }
 
+                breakfastBox.getChildren().clear();
                secondRateBreakfastBox = getBoxes(breakfastList);
                breakfastDescription = createDescriptionBox(breakfast, secondRateBreakfastBox);
                breakfastBox.getChildren().add(breakfastDescription);
 
+               brunchBox.getChildren().clear();
                secondRateBrunchBox = getBoxes(brunchList);
                brunchDescription = createDescriptionBox(brunch, secondRateBrunchBox);
                brunchBox.getChildren().add(brunchDescription);
 
+               lunchBox.getChildren().clear();
                secondRateLunchBox = getBoxes(lunchList);
                lunchDescription = createDescriptionBox(lunch, secondRateLunchBox);
                lunchBox.getChildren().add(lunchDescription);
 
+               dinnerBox.getChildren().clear();
                secondRateDinnerBox = getBoxes(dinnerList);
                dinnerDescription = createDescriptionBox(dinner, secondRateDinnerBox);
                dinnerBox.getChildren().add(dinnerDescription);
 
 
+               mainBox.getChildren().clear();
                mainBox.getChildren().addAll(breakfastBox, brunchBox, lunchBox, dinnerBox);
-               scrollMenuPane.setContent(mainBox);
+
+               return mainBox;
        }
 
     private MealDescriptionBox createDescriptionBox(MealTime mealTime, VBox productsBox) {
@@ -183,15 +225,19 @@ public class MainController implements Initializable {
             case breakfast:
                 if (breakfastBox.getChildren().contains(secondRateBreakfastBox)) breakfastBox.getChildren().remove(secondRateBreakfastBox);
                 else breakfastBox.getChildren().add(secondRateBreakfastBox);
+                break;
             case brunch:
                 if (brunchBox.getChildren().contains(secondRateBrunchBox)) brunchBox.getChildren().remove(secondRateBrunchBox);
                 else brunchBox.getChildren().add(secondRateBrunchBox);
+                break;
             case lunch:
                 if (lunchBox.getChildren().contains(secondRateLunchBox)) breakfastBox.getChildren().remove(secondRateLunchBox);
                 else lunchBox.getChildren().add(secondRateLunchBox);
+                break;
             case dinner:
                 if (dinnerBox.getChildren().contains(secondRateDinnerBox)) dinnerBox.getChildren().remove(secondRateDinnerBox);
                 else dinnerBox.getChildren().add(secondRateDinnerBox);
+                break;
         }
     }
 
@@ -207,6 +253,7 @@ public class MainController implements Initializable {
                 mainBox.getDeleteButton().setOnAction(event -> {
                     vBox.getChildren().remove(mainBox);
                     menuService.delete(menu);
+                    setLists(menuService.findByDateAndUserID(chosenDate, UserSession.getSession().getId()));
 
                 });
                 vBox.getChildren().add(mainBox);
@@ -220,11 +267,9 @@ public class MainController implements Initializable {
     private Date getDate(LocalDate localDate) { return Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
         }
 }
-  /*
-        dataPicker.valueProperty().addListener((ov, oldValue, newValue) -> {
-            chosenDate = getDate(newValue);
-        });
 
+
+/*
         macroProperties.setCalorie(0);
         macroProperties.setFat(0);
         macroProperties.setProtein(0);

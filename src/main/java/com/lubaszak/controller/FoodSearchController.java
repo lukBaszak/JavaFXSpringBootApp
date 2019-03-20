@@ -46,23 +46,15 @@ public class FoodSearchController implements Initializable {
     private ScrollPane foodSearchPanel;
 
     @FXML
-    private AnchorPane foodPanel;
-
-    @FXML
-    private Text servingUnit;
-
-    @FXML
-    private Text foodNameText;
-
+    void returnToMain() {
+        stageManager.switchScene(FxmlView.MAIN);
+    }
     @Autowired
     SpringFXMLLoader loader;
 
     @Autowired
     @Lazy
     StageManager stageManager;
-
-    private MealTime mealTime;
-    private Date date;
 
     public static String productId;
 
@@ -71,16 +63,12 @@ public class FoodSearchController implements Initializable {
 
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (searchField.getText().length() > 4) {
-
                 loadList();
-
         }
     });
     }
 
-
     public void loadList() {
-
 
         ProductResponse products = foodProviderService.getProductsByQuery(searchField.getText());
 

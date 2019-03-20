@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="441.0" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lubaszak.controller.MainController">
    <children>
@@ -14,9 +12,6 @@
          <children>
             <DatePicker fx:id="dataPicker" editable="false" layoutX="25.0" layoutY="14.0" />
             <ScrollPane fx:id="scrollMenuPane" layoutX="34.0" layoutY="65.0" prefHeight="400.0" prefWidth="301.0" />
-            <Button layoutX="346.0" layoutY="65.0" mnemonicParsing="false" text="Button" />
-            <Button fx:id="searchButton" layoutX="221.0" layoutY="14.0" mnemonicParsing="false" text="Button" />
-            <Text fx:id="testText" layoutX="335.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lul" />
             <ProgressBar fx:id="proteinProgressBar" layoutX="34.0" layoutY="471.0" prefHeight="16.0" prefWidth="200.0" progress="0.0" />
             <ProgressBar fx:id="fatProgressBar" layoutX="34.0" layoutY="493.0" prefHeight="16.0" prefWidth="200.0" progress="0.0" />
             <ProgressBar fx:id="carbProgressBar" layoutX="34.0" layoutY="518.0" prefHeight="16.0" prefWidth="200.0" progress="0.0" />

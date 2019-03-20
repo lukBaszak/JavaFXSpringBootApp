@@ -9,6 +9,7 @@ import com.lubaszak.service.FoodProviderService;
 import com.lubaszak.service.MenuService;
 import com.lubaszak.utils.FxmlView;
 import com.lubaszak.utils.UserSession;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
@@ -41,6 +42,11 @@ public class QuantityController implements Initializable {
 
     @FXML
     private ScrollPane quantityPane;
+
+    @FXML
+    void returnToSearching() {
+        stageManager.switchScene(FxmlView.FOOD_SEARCH);
+    }
 
     public static Product.Measures measures2;
     public static Product product;

@@ -5,14 +5,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<fx:root type="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="318.0" type="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fx:id="quantityMeasure" layoutX="56.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <TextField fx:id="quantityField" layoutX="12.0" layoutY="18.0" prefHeight="17.0" prefWidth="37.0" />
-      <Text fx:id="gramatureText" layoutX="119.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Text fx:id="calorieQuantity" layoutX="196.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="22.13671875" />
-      <Button fx:id="acceptButton" layoutX="255.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" />
-      <Text layoutX="226.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kcal" />
+      <Text fx:id="quantityMeasure" layoutX="50.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <TextField fx:id="quantityField" layoutX="6.0" layoutY="18.0" prefHeight="17.0" prefWidth="37.0" />
+      <Text fx:id="gramatureText" layoutX="175.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="calorieQuantity" layoutX="215.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="22.13671875" />
+      <Button fx:id="acceptButton" layoutX="274.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="30.0" />
+      <Text layoutX="245.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kcal" />
    </children>
 </fx:root>

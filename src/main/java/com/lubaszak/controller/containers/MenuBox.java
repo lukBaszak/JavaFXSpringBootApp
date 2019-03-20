@@ -20,10 +20,21 @@ public class MenuBox extends AnchorPane {
     private Text calorieText;
 
     @FXML
+    private Text proteinText;
+
+    @FXML
+    private Text carbText;
+
+    @FXML
+    private Text fatText;
+
+    @FXML
     private Button deleteButton;
 
     private double calorie;
-
+    private double protein;
+    private double carbs;
+    private double fat;
 
     public MenuBox(Product product, double weight){
 
@@ -31,6 +42,7 @@ public class MenuBox extends AnchorPane {
                 "/fxml/MenuBox.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
+
 
 
         try {
@@ -43,14 +55,21 @@ public class MenuBox extends AnchorPane {
 
 
     public void setContent(Product product, double weight) {
-        System.out.println(product.getServingWeightGrams());
-        System.out.println(product.getCalories());
-        System.out.println(weight ,);
-        double multiplier = product.getServingWeightGrams()/weight;
+
+
+
+        double multiplier = weight/product.getServingWeightGrams();
         calorie = product.getCalories()*multiplier;
+        fat = product.getTotalFat()*multiplier;
+        carbs = product.getTotalCarbohydrate()*multiplier;
+        protein = product.getProtein()*multiplier;
+
 
         foodNameText.setText(product.getFoodName());
         calorieText.setText(String.format("%.2f", calorie));
+        fatText.setText(String.format("%.2f", fat));
+        carbText.setText(String.format("%.2f", carbs));
+        proteinText.setText((String.format("%.2f", protein)));
     }
 
     public Button getDeleteButton() {
@@ -61,6 +80,9 @@ public class MenuBox extends AnchorPane {
     public double getCalorie() {
         return calorie;
     }
+    public double getProtein() { return protein; }
+    public double getCarbs() { return carbs; }
+    public double getFat() { return fat; }
 }
 
 
